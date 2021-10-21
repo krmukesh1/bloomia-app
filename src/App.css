@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a:hover {
+  color: #222;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-around;
+  padding: 20px 0;
+  width: 100%;
 }
-
-.App-link {
-  color: #61dafb;
+.navbar-expand-lg {
+  flex-wrap: nowrap;
+  justify-content: flex-end;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login {
+  padding: 10px 30px;
+  border-radius: 10px;
+}
+.login:hover {
+  color: #fff;
+  background-color: #cecece;
+  border-color: #fff;
+  border-radius: 10px;
+  transition: 0.2s linear;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+.btn-primary:hover {
+  transition: 0.2s linear;
+}
+/* login css */
+#login,
+#signup {
+  width: 450px;
+  margin: 0 auto;
+}
+.images {
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.images img {
+  width: 100%;
+}
+.form-control {
+  width: 100%;
+  margin: 0 auto;
+  border: 0;
+  background-color: #cecece;
+}
+:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #cecece;
+}
+::placeholder {
+  color: #000;
+  font-weight: bold;
+}
+button.btn.btn-primary {
+  width: 100%;
+}
+button.btn.btn-primary {
+  width: 100%;
+}
+.btn-check:focus + .btn-primary,
+.btn-primary:focus {
+  box-shadow: none !important;
+  padding: 8px;
 }

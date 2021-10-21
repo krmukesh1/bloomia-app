@@ -1,0 +1,26 @@
+.content p {
+  color: #979797;
+}
+.forget-password {
+  text-align: end;
+  margin: 10px 0;
+}
+a {
+  text-decoration: none;
+  color: #979797;
+}
+a:hover {
+  text-decoration: none;
+  color: #979797;
+}
+.link {
+  color: #979797;
+  padding: 30px 0;
+}
+.link a {
+  color: #222;
+}
+button.btn.btn-primary {
+  background: #2f45c5;
+  opacity: 0.9;
+}

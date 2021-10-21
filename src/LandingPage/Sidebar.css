@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: 0.2s linear;
+}
+button.btn.btn-primary {
+  position: relative;
+}
+button.btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+div#offcanvasRight {
+  visibility: visible !important;
+}
+.offcanvas-end {
+  top: 0;
+  right: 30%;
+  width: 30%;
+  border-left: none;
+  transform: translateX(100%);
+}
+.offcanvas-header .btn-close {
+  display: none;
+}
+.offcanvas-header {
+  display: none;
+}
+
+.setting.mt-5 {
+  display: flex;
+  justify-content: space-between;
+}
+.setting-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.setting-left i.fa.fa-question-circle {
+  margin: 0 10px 4px;
+  background-color: #ebebfc;
+  border-radius: 50%;
+  padding: 5px;
+}
+.setting-right i {
+  padding: 0 10px;
+}
+.setting-right i {
+  margin: 0 10px;
+  padding: 10px 10px;
+  font-size: 20px;
+  background: #ebebfc;
+  border-radius: 50%;
+  cursor: pointer;
+}
+select#car {
+  font-size: 20px;
+  font-weight: bold;
+}
+select#cars {
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+.reverse {
+  display: flex;
+  justify-content: space-between;
+}
+.col-4.fieldsettoggle.form-check.form-switch {
+  display: flex;
+  justify-content: flex-end;
+}
+.title-section {
+  font-size: 11px;
+}
+.bg-grey {
+  background-color: #ebebfc;
+  border-radius: 15px;
+  margin: 20px 0;
+  padding: 10px 10px;
+}
+@media (max-width: 975px) {
+  button.btn {
+    display: block;
+  }
+  div#offcanvasRight {
+    visibility: visible;
+  }
+  .offcanvas-end {
+    top: 0;
+    right: 0px;
+    width: 400px;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    transform: translateX(100%);
+  }
+  .offcanvas-header .btn-close {
+    display: block;
+  }
+  .offcanvas-header {
+    display: flex;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 0;
+  }
+  .banner-shadow {
+    position: absolute;
+    top: 30%;
+    left: 22%;
+    width: 201px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #2f45c5;
+    color: #f5f5f5;
+    box-shadow: 0 0 1px rgb(0 0 0 / 5%);
+  }
+}
