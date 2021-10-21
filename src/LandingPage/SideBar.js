@@ -41,8 +41,8 @@ const SideBar = () => {
             <Router>
               <Header />
 
+              <Route exact path="/profile" component={Profile} />
               <Route exact path="/" component={Setting} />
-              <Route path="/profile" component={Profile} />
             </Router>
           </div>
         </div>

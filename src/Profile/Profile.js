@@ -67,7 +67,7 @@ const Profile = () => {
   return (
     <>
       <button className="slide" onClick={clickHandler}>
-        <i className="fa fa-times "></i>
+        <i class="fa fa-arrow-left"></i>
       </button>
       <div className="container">
         <div className="row col-md-12">
