@@ -62,10 +62,13 @@ const Profile = () => {
     }
   };
   const clickHandler = () => {
-    history.push("/profile");
+    history.push("/");
   };
   return (
     <>
+      <button className="slide" onClick={clickHandler}>
+        <i className="fa fa-times "></i>
+      </button>
       <div className="container">
         <div className="row col-md-12">
           <div class="col-md-6 col-sm-6 col-xs-12 mb-3">

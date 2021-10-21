@@ -1,11 +1,9 @@
 import React from "react";
-import { useRouteMatch, Route } from "react-router-dom";
+
 import Spinner from "../Play/Spinner";
 import SideBar from "../LandingPage/SideBar";
-import Header from "../Components/Header";
-import Profile from "../Profile/Profile";
+
 const Home = () => {
-  let { path } = useRouteMatch();
   return (
     <>
       <div className="container-fluid">
@@ -14,11 +12,7 @@ const Home = () => {
             <Spinner />
           </div>
           <div className="col-lg-3 col-md-3 col-sm-1 col-xs-1 right-side">
-            <Header />
             <SideBar />
-            <Profile />
-          
-            
           </div>
         </div>
       </div>
