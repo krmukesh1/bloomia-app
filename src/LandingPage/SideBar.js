@@ -4,7 +4,7 @@ import * as FaIcons from "react-icons/fa";
 import "./Sidebar.css";
 import Header from "../Components/Header";
 import Profile from "../Profile/Profile";
-import Setting from "../Setting.js/Setting";
+import Setting from "../Setting/Setting";
 
 const SideBar = () => {
   return (

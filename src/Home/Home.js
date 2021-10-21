@@ -8,10 +8,10 @@ const Home = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-lg-9 col-md-12 col-sm-11 col-xs-11 left-side">
+          <div className="col-lg-8 col-md-12 col-sm-11 col-xs-11 left-side">
             <Spinner />
           </div>
-          <div className="col-lg-3 col-md-3 col-sm-1 col-xs-1 right-side">
+          <div className="col-lg-4 col-md-3 col-sm-1 col-xs-1 right-side">
             <SideBar />
           </div>
         </div>

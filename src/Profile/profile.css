@@ -11,7 +11,7 @@ button.tick {
   border-radius: 50%;
   padding: 10px 20px;
   position: absolute;
-  right: 16%;
+  right: 25%;
 }
 button.cancel {
   width: 26px;
@@ -22,9 +22,58 @@ button.cancel {
   position: absolute;
   right: 12%;
 }
+button.slide {
+  width: 26px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 10px 20px;
+  position: absolute;
+  background-color: #ebebfc;
+  cursor: pointer;
+  top: 0%;
+}
+i.fa.fa-arrow-left {
+  margin-left: -7px;
+}
 i.fa.fa-check {
   margin-left: -8px;
 }
 i.fa.fa-times {
   margin-left: -5px;
+}
+i.fa.fa-plus {
+  position: absolute;
+  cursor: pointer;
+  bottom: 10%;
+  left: 25%;
+  color: #fff;
+  background: #000;
+  padding: 8px;
+  border-radius: 50%;
+}
+.avatar {
+  height: 100px;
+  width: 100px;
+  cursor: pointer;
+}
+.avatar img {
+  height: 100%;
+  width: 100%;
+}
+.col-12.image_Uploader {
+  position: relative;
+  margin-bottom: 40px;
+}
+.p-1 {
+  position: relative;
+}
+.information-content {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  align-items: center;
+}
+.content p {
+  color: #979797;
+  margin-bottom: 0;
 }

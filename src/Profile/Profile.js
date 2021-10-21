@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import "./profile.css";
+import avatar from "./images/avatar.jpg";
 
 import axios from "axios";
 
@@ -51,7 +52,7 @@ const Profile = () => {
           console.log(response);
           if (response.data.message === "updated user successfully") {
             history.push("/");
-            alert("Pasword updated Successfuly");
+            alert("Profile updated Successfuly");
           } else {
             localStorage.clear();
             alert("Invalid Password");
@@ -64,12 +65,55 @@ const Profile = () => {
   const clickHandler = () => {
     history.push("/");
   };
+  // profile image
+  const uploadedImage = React.useRef(null);
+  const imageUploader = React.useRef(null);
+
+  const handleImageUpload = (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+      reader.onload = (e) => {
+        current.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <>
       <button className="slide" onClick={clickHandler}>
         <i class="fa fa-arrow-left"></i>
       </button>
-      <div className="container">
+      <div className="container-fluid">
+        <div className="col-12 image_Uploader">
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            ref={imageUploader}
+            style={{
+              display: "none",
+            }}
+          />
+          <i
+            className="fa fa-plus"
+            onClick={() => imageUploader.current.click()}
+          ></i>
+          <div className="avatar">
+            <img ref={uploadedImage} src={avatar} alt="avatar" />
+          </div>
+        </div>
+        <div className="information-content">
+          <p>Personal Information</p>
+          <button className="tick" onClick={submitHandler}>
+            <i className="fa fa-check "></i>
+          </button>
+          <button className="cancel" onClick={clickHandler}>
+            <i className="fa fa-times "></i>
+          </button>
+        </div>
         <div className="row col-md-12">
           <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
             <label for="first_name" class="form-label">
@@ -125,53 +169,10 @@ const Profile = () => {
               style={{ cursor: "not-allowed" }}
             />
           </div>
-
-          <button className="tick" onClick={submitHandler}>
-            <i className="fa fa-check "></i>
-          </button>
-          <button className="cancel" onClick={clickHandler}>
-            <i className="fa fa-times "></i>
-          </button>
         </div>
         <hr />
         <Password />
       </div>
-
-      {/* <div className="profileContainer">
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId="name">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="First Name"
-              value={first_name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId="name">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Last Name"
-              value={last_name}
-              onChange={(e) => setLastName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group controlId="name">
-            <Form.Label>Number</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="number"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Button type="submit" varient="primary">
-            Update
-          </Button>
-        </Form>
-      </div> */}
     </>
   );
 };

@@ -35,7 +35,7 @@ const Password = () => {
     }
   };
   return (
-    <div className="container">
+    <div>
       <div className="row col-md-12">
         <p>Password Settings</p>
         <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
@@ -64,7 +64,7 @@ const Password = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
+        <div class="col-md-8 col-sm-8 col-xs-12 mb-3">
           <button className="btn btn-primary" onClick={submitHandler}>
             Save Password
           </button>

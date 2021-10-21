@@ -20,8 +20,8 @@ div#offcanvasRight {
 }
 .offcanvas-end {
   top: 0;
-  right: 30%;
-  width: 30%;
+  right: 32%;
+  width: 32%;
   border-left: none;
   transform: translateX(100%);
 }

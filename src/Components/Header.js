@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import avatar from "./images/avatar.jpg";
 
 const Header = () => {
   const history = useHistory();
@@ -16,6 +17,22 @@ const Header = () => {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     history.push("/login");
+  };
+  // profile image
+  const uploadedImage = React.useRef(null);
+  const imageUploader = React.useRef(null);
+
+  const handleImageUpload = (e) => {
+    const [file] = e.target.files;
+    if (file) {
+      const reader = new FileReader();
+      const { current } = uploadedImage;
+      current.file = file;
+      reader.onload = (e) => {
+        current.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
   };
   return (
     <>

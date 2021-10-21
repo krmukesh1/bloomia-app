@@ -8,7 +8,7 @@ import Password from "./Password/Password";
 
 function App() {
   return (
-    <BrowserRouter basename={window.location.pathname || ""}>
+    <BrowserRouter>
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
