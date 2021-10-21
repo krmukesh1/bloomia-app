@@ -16,8 +16,9 @@ const Home = () => {
           <div className="col-lg-3 col-md-3 col-sm-1 col-xs-1 right-side">
             <Header />
             <SideBar />
-            <Route path={`${path}/profile`} component={Profile} />
             <Profile />
+          
+            
           </div>
         </div>
       </div>
