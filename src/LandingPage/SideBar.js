@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import "./Sidebar.css";
 import Header from "../Components/Header";
+import Profile from "../Profile/Profile";
+import { Switch, Route } from "react-router-dom";
 
 const SideBar = () => {
   var n = 60;
@@ -168,6 +170,9 @@ const SideBar = () => {
                 </fieldset>
               </form>
             </div>
+            <Switch>
+              <Route path="/profile" component={Profile} />
+            </Switch>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
 import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const history = useHistory();
@@ -22,7 +23,9 @@ const Header = () => {
         {isLoggedIn ? (
           <Nav className="ml-auto">
             <NavDropdown title={useName} id="navbarScrollingDropdown">
-              <NavDropdown.Item to="/profile">Profile</NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/profile">Profile</Link>
+              </NavDropdown.Item>
               <NavDropdown.Item onClick={logoutHandler}>
                 Logout
               </NavDropdown.Item>
