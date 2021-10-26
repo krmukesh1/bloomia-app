@@ -37,7 +37,7 @@ video {
   position: absolute;
   top: 20px;
   left: 20px;
-  width: 200px;
+  width: 180px;
   background: #fff;
   padding: 10px 20px;
   border-radius: 15px;
@@ -56,6 +56,7 @@ i.fa.fa-play,
 i.fa.fa-pause {
   top: 50%;
   left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
   font-size: 24px;
   cursor: pointer;
