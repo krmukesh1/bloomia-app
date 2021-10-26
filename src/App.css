@@ -119,3 +119,20 @@ button.btn.btn-primary {
   padding: 1rem 2rem 1rem 1rem;
   overflow-y: auto;
 }
+@media (max-width: 1024px) {
+  .offcanvas-body {
+    flex-grow: 1;
+    padding: 1rem 1rem 1rem 0rem;
+    overflow-y: auto;
+  }
+  select#cars {
+    padding: 7px 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .offcanvas-body {
+    flex-grow: 1;
+    padding: 1rem 1rem 1rem 1rem;
+    overflow-y: auto;
+  }
+}

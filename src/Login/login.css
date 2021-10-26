@@ -47,3 +47,10 @@ input.form-control::placeholder {
 p {
   color: #979797;
 }
+@media (max-width: 767px) {
+  #login,
+  #signup {
+    width: 320px;
+    margin: 0 auto;
+  }
+}
