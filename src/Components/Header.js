@@ -14,8 +14,6 @@ const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [first_name, setName] = useState("");
   const [last_name, setLastName] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
   const [Image, setImage] = useState("");
   let useName = `${first_name} ${last_name} `;
   useEffect(() => {
@@ -33,8 +31,6 @@ const Header = () => {
         console.log(response);
         setName(response.data.data.first_name);
         setLastName(response.data.data.last_name);
-        setNumber(response.data.data.contact);
-        setEmail(response.data.data.email);
         setImage(response.data.data.profileImage);
         localStorage.setItem("f_name", response.data.data.first_name);
         localStorage.setItem("l_name", response.data.data.last_name);

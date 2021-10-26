@@ -28,6 +28,7 @@ const Login = () => {
               "token",
               response.data.token
             );
+            console.log(userinfo);
             console.log("Mukesh", userinfo1);
             if (response.data.message === "login user successfully") {
               history.push("/");

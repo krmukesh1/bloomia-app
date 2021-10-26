@@ -92,7 +92,9 @@ const Profile = () => {
 
   // Icon
   const [iconChange, setIconchnage] = useState(true);
+  const [disableReverse, setDisableReverse] = useState(true);
   const changeIcons = () => {
+    setDisableReverse(false);
     setIconchnage(false);
   };
   return (
@@ -136,68 +138,71 @@ const Profile = () => {
               <button
                 className="cancel light"
                 onClick={() => setIconchnage(true)}
+                onClick={() => setDisableReverse(true)}
               >
                 <i className="fa fa-times "></i>
               </button>
             </>
           )}
         </div>
-        <div className="row col-md-12">
-          <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
-            <label for="first_name" class="form-label">
-              First Name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="first_name"
-              placeholder="First Name"
-              value={first_name}
-              onChange={(e) => setName(e.target.value)}
-            />
+        <fieldset disabled={disableReverse}>
+          <div className="row col-md-12">
+            <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
+              <label for="first_name" class="form-label">
+                First Name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="first_name"
+                placeholder="First Name"
+                value={first_name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
+              <label for="last_name" class="form-label">
+                Last Name
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="last_name"
+                placeholder="Last Name"
+                value={last_name}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
+              <label for="number" class="form-label">
+                Number
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                id="number"
+                placeholder="Number"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+              />
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
+              <label for="email" class="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled="true"
+                style={{ cursor: "not-allowed" }}
+              />
+            </div>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
-            <label for="last_name" class="form-label">
-              Last Name
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="last_name"
-              placeholder="Last Name"
-              value={last_name}
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
-            <label for="number" class="form-label">
-              Number
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              id="number"
-              placeholder="Number"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-            />
-          </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 mb-3">
-            <label for="email" class="form-label">
-              Email
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled="true"
-              style={{ cursor: "not-allowed" }}
-            />
-          </div>
-        </div>
+        </fieldset>
         <hr />
         <Password />
       </div>
