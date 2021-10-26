@@ -10,7 +10,7 @@ const Setting = () => {
   };
   return (
     <div>
-      <div className="setting mt-2">
+      <div className="setting mt-4">
         <div className="setting-left">
           <span>Kegel Exercise</span>
           <i class="fa fa-question-circle"></i>

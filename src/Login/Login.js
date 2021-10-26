@@ -22,8 +22,13 @@ const Login = () => {
         axios
           .post("https://bloomia.herokuapp.com/users/login", user, config)
           .then((response) => {
+            console.log(response);
             const userinfo = localStorage.setItem("token", response.data.token);
-            console.log(userinfo);
+            const userinfo1 = localStorage.getItem(
+              "token",
+              response.data.token
+            );
+            console.log("Mukesh", userinfo1);
             if (response.data.message === "login user successfully") {
               history.push("/");
 

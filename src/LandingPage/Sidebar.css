@@ -32,7 +32,7 @@ div#offcanvasRight {
   display: none;
 }
 
-.setting.mt-2 {
+.setting.mt-4 {
   display: flex;
   justify-content: space-between;
 }
