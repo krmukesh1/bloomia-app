@@ -97,6 +97,10 @@ const Profile = () => {
     setDisableReverse(false);
     setIconchnage(false);
   };
+  const chnageIconPen = () => {
+    setIconchnage(true);
+    setDisableReverse(true);
+  };
   return (
     <>
       <button className="slide" onClick={clickHandler}>
@@ -135,11 +139,7 @@ const Profile = () => {
                 <i className="fa fa-check "></i>
               </button>
 
-              <button
-                className="cancel light"
-                onClick={() => setIconchnage(true)}
-                onClick={() => setDisableReverse(true)}
-              >
+              <button className="cancel" onClick={chnageIconPen}>
                 <i className="fa fa-times "></i>
               </button>
             </>

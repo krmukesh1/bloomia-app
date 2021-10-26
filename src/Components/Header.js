@@ -1,43 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
+
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import avatar from "./images/avatar.jpg";
-import axios from "axios";
+
 import "./Header.css";
 const Header = () => {
   const history = useHistory();
   const token = localStorage.getItem("token");
-  const f_userName = localStorage.getItem("f_name");
-  const l_userName = localStorage.getItem("l_name");
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [first_name, setName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [Image, setImage] = useState("");
-  let useName = `${first_name} ${last_name} `;
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log(token);
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-      },
-    };
-    axios
-      .get("https://bloomia.herokuapp.com/users/getUser", config)
-      .then((response) => {
-        console.log(response);
-        setName(response.data.data.first_name);
-        setLastName(response.data.data.last_name);
-        setImage(response.data.data.profileImage);
-        localStorage.setItem("f_name", response.data.data.first_name);
-        localStorage.setItem("l_name", response.data.data.last_name);
-      });
-  }, []);
+  const [fname, setFName] = useState("");
+  const [lname, setLName] = useState("");
+  const [image, setImage] = useState("");
+  let useName = `${fname} ${lname} `;
   useEffect(() => {
     setIsLoggedIn(token);
+    console.log(localStorage.getItem("f_name"));
+    setFName(localStorage.getItem("f_name"));
+    setLName(localStorage.getItem("l_name"));
+    setImage(localStorage.getItem("Image"));
   }, []);
   const logoutHandler = () => {
     localStorage.removeItem("token");
@@ -50,6 +32,11 @@ const Header = () => {
       {/* <Navbar expand="lg"> */}
       {isLoggedIn ? (
         <div class="dropdown">
+          <div className="user">
+            Welcome,
+            <br />
+            <h4>{useName}</h4>
+          </div>
           <button
             className=" dropdown-toggle"
             type="button"
@@ -57,13 +44,17 @@ const Header = () => {
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Welcome,
-            <br />
-            {useName}
+            {
+              <img
+                className="headerIcon"
+                src={"https://bloomia.herokuapp.com/" + image}
+                alt="avatar"
+              />
+            }
           </button>
           <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li>
-              <Link class="dropdown-item" to="/profile">
+              <Link className="dropdown-item" to="/profile">
                 Profile
               </Link>
             </li>

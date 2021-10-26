@@ -11,3 +11,12 @@ select {
   display: flex;
   justify-content: flex-end;
 }
+img.headerIcon {
+  width: 35px;
+  border-radius: 50%;
+  height: 35px;
+}
+.user {
+  text-align: right;
+  margin-right: 15px;
+}

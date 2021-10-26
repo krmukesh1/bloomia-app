@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./login.css";
 import axios from "axios";
 import { useHistory } from "react-router";
@@ -8,6 +8,9 @@ const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [first_name, setName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [Image, setImage] = useState("");
 
   const submitHandler = async (e) => {
     let user = { email, password };
@@ -23,15 +26,31 @@ const Login = () => {
           .post("https://bloomia.herokuapp.com/users/login", user, config)
           .then((response) => {
             console.log(response);
-            const userinfo = localStorage.setItem("token", response.data.token);
-            const userinfo1 = localStorage.getItem(
-              "token",
-              response.data.token
-            );
-            console.log(userinfo);
+            localStorage.setItem("token", response.data.token);
+            const userinfo1 = localStorage.getItem("token");
             console.log("Mukesh", userinfo1);
-            if (response.data.message === "login user successfully") {
-              history.push("/");
+            if (response.data.sucess) {
+              const config = {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: "Bearer " + response.data.token,
+                },
+              };
+              axios
+                .get("https://bloomia.herokuapp.com/users/getUser", config)
+                .then((response) => {
+                  console.log(response);
+                  setName(response.data.data.first_name);
+                  setLastName(response.data.data.last_name);
+                  setImage(response.data.data.profileImage);
+                  localStorage.setItem("f_name", response.data.data.first_name);
+                  localStorage.setItem("l_name", response.data.data.last_name);
+                  localStorage.setItem(
+                    "Image",
+                    response.data.data.profileImage
+                  );
+                  history.push("/");
+                });
 
               alert("user Login Successfully");
             } else {
@@ -46,14 +65,18 @@ const Login = () => {
     setEmail("");
     setPassword("");
   };
+
+  const token = localStorage.getItem("token");
+  console.log(token);
+
   return (
     <>
       <div className="col-sm-6 offset-sm-3 text-center" id="login">
-        <div className="images ">
+        <div className="images pb-5">
           <img src={logo} alt="logo" />
         </div>
         <div className="content pb-3">
-          <h2>Welcome Back to Bloomia.</h2>
+          <h3>Welcome Back to Bloomia.</h3>
           <p>Please enter your address and password to login</p>
         </div>
         <div className="form-control mb-4">
@@ -90,36 +113,6 @@ const Login = () => {
           Don't have an account? ?<a href="/register"> Sign Up</a>
         </div>
       </div>
-      {/* <div className="loginContainer">
-        <Form onSubmit={submitHandler}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control
-              type="email"
-              value={email}
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              placeholder="Password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
-        <Row className="py-3">
-          <Col>
-            New Customer ? <a href="/register">Register Here</a>
-          </Col>
-        </Row>
-      </div> */}
     </>
   );
 };

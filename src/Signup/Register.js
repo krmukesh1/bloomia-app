@@ -55,7 +55,7 @@ const Register = () => {
         <div className="images ">
           <img src={logo} alt="" />
         </div>
-        <h1>Welcome to Bloomia.</h1>
+        <h3>Welcome to Bloomia.</h3>
         <p>Please enter your details to create your account.</p>
         <div className="form-control mb-2">
           <input
