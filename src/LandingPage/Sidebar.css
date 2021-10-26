@@ -53,7 +53,7 @@ div#offcanvasRight {
 i.fa.fa-volume-up {
   margin: 0 3px;
   padding: 10px 10px;
-  font-size: 20px;
+  font-size: 16px;
   background: #ebebfc;
   border-radius: 50%;
   cursor: pointer;
@@ -61,7 +61,7 @@ i.fa.fa-volume-up {
 i.fa.fa-volume-up.d {
   margin: 0 3px;
   padding: 10px 10px;
-  font-size: 20px;
+  font-size: 16px;
   background: #2f45c5;
   border-radius: 50%;
   cursor: pointer;
@@ -70,7 +70,7 @@ i.fa.fa-volume-up.d {
 i.fa.fa-sm-word {
   margin: 0 3px;
   padding: 10px 10px;
-  font-size: 20px;
+  font-size: 16px;
   background: #2f45c5;
   border-radius: 50%;
   cursor: pointer;
@@ -79,7 +79,7 @@ i.fa.fa-sm-word {
 i.fa.fa-sm-words {
   margin: 0 3px;
   padding: 10px 10px;
-  font-size: 20px;
+  font-size: 16px;
   background: #ebebfc;
   border-radius: 50%;
   cursor: pointer;

@@ -29,8 +29,8 @@ const Setting = () => {
           <i className={btn_class} onClick={colorChange}>
             <span>&#119;</span>
           </i>
-          <i className={btn_volume} onClick={colorChangeVolume}></i>
           <i className="fa fa-volume-up fa-sm"></i>
+          <i className={btn_volume} onClick={colorChangeVolume}></i>
         </div>
       </div>
 
