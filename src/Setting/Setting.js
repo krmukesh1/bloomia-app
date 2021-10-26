@@ -8,6 +8,16 @@ const Setting = () => {
   const enableReverse = () => {
     setDisableReverse(!disableReverse);
   };
+  const [word, setWord] = useState(true);
+  let btn_class = word ? "fa fa-sm-word" : "fa fa-sm-words";
+  const colorChange = () => {
+    setWord(!word);
+  };
+  const [volume, setVolume] = useState(true);
+  let btn_volume = volume ? "fa fa-volume-up fa-sm" : "fa fa-volume-up fa-sm d";
+  const colorChangeVolume = () => {
+    setVolume(!volume);
+  };
   return (
     <div>
       <div className="setting mt-4">
@@ -16,8 +26,10 @@ const Setting = () => {
           <i class="fa fa-question-circle"></i>
         </div>
         <div className="setting-right">
-          <i className="fa fa-volume-up fa-sm"></i>
-          <i className="fa fa-volume-up fa-sm"></i>
+          <i className={btn_class} onClick={colorChange}>
+            <span>&#119;</span>
+          </i>
+          <i className={btn_volume} onClick={colorChangeVolume}></i>
           <i className="fa fa-volume-up fa-sm"></i>
         </div>
       </div>

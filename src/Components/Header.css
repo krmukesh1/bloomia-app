@@ -1,6 +1,12 @@
 .dropdown-menu {
   transform: translate(208px, 40px);
 }
+.dropdown-menu.show {
+  display: block;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px 0 #dadada !important;
+}
 .dropdown button,
 select {
   text-transform: none;
@@ -19,4 +25,8 @@ img.headerIcon {
 .user {
   text-align: right;
   margin-right: 15px;
+  font-family: "Gilroy-SemiBold";
+}
+.user h4 {
+  font-family: "Gilroy-SemiBold";
 }
