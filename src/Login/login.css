@@ -16,11 +16,33 @@ a:hover {
 .link {
   color: #979797;
   padding: 30px 0;
+  font-weight: 600;
 }
 .link a {
-  color: #222;
+  color: #343a40;
 }
 button.btn.btn-primary {
   background: #2f45c5;
   opacity: 0.9;
+}
+.form-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  background-color: #ebebeb;
+  text-transform: lowercase;
+}
+/* input.form-control {
+  font-weight: 400;
+} */
+.control-button .fa {
+  color: #a7a4a4;
+}
+input.form-control::placeholder {
+  color: #000;
+  font-weight: 500;
+}
+p {
+  color: #979797;
 }

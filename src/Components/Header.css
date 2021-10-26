@@ -1,0 +1,13 @@
+.dropdown-menu {
+  transform: translate(208px, 40px);
+}
+.dropdown button,
+select {
+  text-transform: none;
+  background: transparent;
+  text-align: center;
+}
+.dropdown {
+  display: flex;
+  justify-content: flex-end;
+}

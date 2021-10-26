@@ -3,7 +3,7 @@ import "./login.css";
 import axios from "axios";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-
+import logo from "./logo/Logo v1.png";
 const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
@@ -42,29 +42,38 @@ const Login = () => {
   };
   return (
     <>
-      <div className="col-sm-6 offset-sm-3 text-center  " id="login">
+      <div className="col-sm-6 offset-sm-3 text-center" id="login">
         <div className="images ">
-          <img src="images/Logo v1.png" alt="" />
+          <img src={logo} alt="logo" />
         </div>
-        <div className="content">
+        <div className="content pb-3">
           <h2>Welcome Back to Bloomia.</h2>
           <p>Please enter your address and password to login</p>
         </div>
-        <input
-          type="text"
-          placeholder="Enter your email address"
-          className="form-control"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />{" "}
-        <br />
-        <input
-          type="password"
-          className="form-control"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className="form-control mb-4">
+          <input
+            type="text"
+            placeholder="Enter your email address"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <span className="control-button">
+            <i className="fa fa-envelope"></i>
+          </span>
+        </div>
+        <div className="form-control">
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span className="control-button">
+            <i className="fa fa-lock "></i>
+          </span>
+        </div>
         <div className="forget-password">
           <Link to="">Forget Your password?</Link>
         </div>

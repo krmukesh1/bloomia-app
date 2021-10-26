@@ -11,7 +11,8 @@ const Profile = () => {
   const [last_name, setLastName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
-
+  const [Image, setImage] = useState("");
+  const [selectedFile, setSelectedFile] = useState();
   const history = useHistory();
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,6 +31,7 @@ const Profile = () => {
         setLastName(response.data.data.last_name);
         setNumber(response.data.data.contact);
         setEmail(response.data.data.email);
+        setImage(response.data.data.profileImage);
         localStorage.setItem("f_name", response.data.data.first_name);
         localStorage.setItem("l_name", response.data.data.last_name);
       });
@@ -51,7 +53,7 @@ const Profile = () => {
         .then((response) => {
           console.log(response);
           if (response.data.message === "updated user successfully") {
-            history.push("/");
+            setIconchnage(true);
             alert("Profile updated Successfuly");
           } else {
             localStorage.clear();
@@ -65,21 +67,33 @@ const Profile = () => {
   const clickHandler = () => {
     history.push("/");
   };
-  // profile image
-  const uploadedImage = React.useRef(null);
-  const imageUploader = React.useRef(null);
-
-  const handleImageUpload = (e) => {
-    const [file] = e.target.files;
-    if (file) {
-      const reader = new FileReader();
-      const { current } = uploadedImage;
-      current.file = file;
-      reader.onload = (e) => {
-        current.src = e.target.result;
+  const imageUploader = React.useRef();
+  const imageSubmit = (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    formData.append("attachments", event.target.files[0]);
+    console.log("Hi form data", formData);
+    // formData.append("attachments", event.target.files);
+    const token = localStorage.getItem("token");
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
       };
-      reader.readAsDataURL(file);
+      axios
+        .put("https://bloomia.herokuapp.com/users/upload", formData, config)
+        .then((response) => {});
+    } catch (error) {
+      console.log(`the error is: ${error}`);
     }
+  };
+
+  // Icon
+  const [iconChange, setIconchnage] = useState(true);
+  const changeIcons = () => {
+    setIconchnage(false);
   };
   return (
     <>
@@ -91,28 +105,42 @@ const Profile = () => {
           <input
             type="file"
             accept="image/*"
-            onChange={handleImageUpload}
+            onChange={imageSubmit}
             ref={imageUploader}
             style={{
               display: "none",
             }}
           />
+
+          <div className="avatar">
+            <img src={"https://bloomia.herokuapp.com/" + Image} alt="avatar" />
+          </div>
+
           <i
-            className="fa fa-plus"
+            className="fa fa-pencil "
             onClick={() => imageUploader.current.click()}
           ></i>
-          <div className="avatar">
-            <img ref={uploadedImage} src={avatar} alt="avatar" />
-          </div>
         </div>
         <div className="information-content">
-          <p>Personal Information</p>
-          <button className="tick" onClick={submitHandler}>
-            <i className="fa fa-check "></i>
-          </button>
-          <button className="cancel" onClick={clickHandler}>
-            <i className="fa fa-times "></i>
-          </button>
+          <p className="Gilroy-Bold">Personal Information</p>
+          {iconChange ? (
+            <button className="pen" onClick={changeIcons}>
+              <i className="fa fa-pencil "></i>
+            </button>
+          ) : (
+            <>
+              <button className="tick light" onClick={submitHandler}>
+                <i className="fa fa-check "></i>
+              </button>
+
+              <button
+                className="cancel light"
+                onClick={() => setIconchnage(true)}
+              >
+                <i className="fa fa-times "></i>
+              </button>
+            </>
+          )}
         </div>
         <div className="row col-md-12">
           <div class="col-md-6 col-sm-6 col-xs-12 mb-3">

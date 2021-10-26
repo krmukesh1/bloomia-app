@@ -3,7 +3,6 @@ import Login from "./Login/Login";
 import Register from "./Signup/Register";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home/Home";
-
 import Password from "./Password/Password";
 
 function App() {

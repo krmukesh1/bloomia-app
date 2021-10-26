@@ -51,7 +51,7 @@ div#offcanvasRight {
   padding: 0 10px;
 }
 .setting-right i {
-  margin: 0 10px;
+  margin: 0 3px;
   padding: 10px 10px;
   font-size: 20px;
   background: #ebebfc;
@@ -59,14 +59,19 @@ div#offcanvasRight {
   cursor: pointer;
 }
 select#car {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: lighter;
+  font-family: "Gilroy-SemiBold";
 }
 select#cars {
   font-weight: bold;
   cursor: pointer;
   background-color: #f8f9fa;
   border-radius: 10px;
+  padding: 7px 25px;
+}
+#s1 {
+  background-color: #f8f9fa;
 }
 .reverse {
   display: flex;
@@ -78,11 +83,13 @@ select#cars {
 }
 .title-section {
   font-size: 11px;
+  font-weight: 100;
+  margin: 8px 0 0 0;
 }
 .bg-grey {
   background-color: #ebebfc;
   border-radius: 15px;
-  margin: 20px 0;
+  margin: 8px 0;
   padding: 10px 10px;
 }
 @media (max-width: 975px) {
@@ -111,15 +118,37 @@ select#cars {
     flex-wrap: nowrap;
     padding: 0;
   }
+  .back-video {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+  path {
+    color: #000;
+  }
+}
+@media (max-width: 767px) {
+  svg.button {
+    width: 300px;
+    height: 304px;
+  }
   .banner-shadow {
     position: absolute;
-    top: 30%;
-    left: 22%;
-    width: 201px;
-    height: 200px;
-    border-radius: 50%;
-    background-color: #2f45c5;
-    color: #f5f5f5;
-    box-shadow: 0 0 1px rgb(0 0 0 / 5%);
+    top: 20%;
+    left: 10%;
+  }
+  .logo {
+    width: 100px;
+  }
+  i.fa.fa-play,
+  i.fa.fa-pause {
+    top: 46%;
+    left: 48%;
+  }
+  select#cars {
+    border-radius: 10px;
+    padding: 7px 20px;
+  }
+  .setting-right i {
+    margin: 0 5px;
   }
 }

@@ -1,3 +1,24 @@
+@font-face {
+  font-family: "Gilroy-Medium";
+  src: url("fonts/Gilroy/Gilroy-Medium.ttf");
+}
+@font-face {
+  font-family: "Gilroy-SemiBold";
+  src: url("fonts/Gilroy/Gilroy-SemiBold.ttf");
+}
+@font-face {
+  font-family: "Gilroy-Bold";
+  src: url("fonts/Gilroy/Gilroy-Bold.ttf");
+}
+@font-face {
+  font-family: "Gilroy-Heavy";
+  src: url("fonts/Gilroy/Gilroy-Heavy.ttf");
+}
+@font-face {
+  font-family: "Riffic Free Bold";
+  src: url("fonts/RifficFree/RifficFree-Bold.ttf");
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +27,7 @@
   border: none;
   text-transform: capitalize;
   transition: 0.2s linear;
+  font-family: "Gilroy-Bold";
 }
 a:hover {
   color: #222;
@@ -61,15 +83,16 @@ a:hover {
   width: 100%;
   margin: 0 auto;
   border: 0;
-  background-color: #cecece;
 }
 :focus-visible {
   outline: none !important;
   box-shadow: none !important;
 }
+
 .form-control:focus {
   color: #212529;
-  background-color: #cecece;
+  background-color: transparent;
+  box-shadow: none !important;
 }
 ::placeholder {
   color: #000;
@@ -85,4 +108,9 @@ button.btn.btn-primary {
 .btn-primary:focus {
   box-shadow: none !important;
   padding: 8px;
+}
+.offcanvas-body {
+  flex-grow: 1;
+  padding: 1rem 2rem 1rem 1rem;
+  overflow-y: auto;
 }
