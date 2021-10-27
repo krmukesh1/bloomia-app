@@ -7,6 +7,8 @@ const Password = () => {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const submitHandler = async (e) => {
+    setPassIconchnage(true);
+    setDisablePassReverse(true);
     e.preventDefault();
     let user = { newPassword, password };
     const token = localStorage.getItem("token");
@@ -23,7 +25,6 @@ const Password = () => {
         .then((response) => {
           console.log(response);
           if (response.data.message === "updated password successfully") {
-            history.push("/header");
             alert("updated Successfuly");
           } else {
             localStorage.clear();

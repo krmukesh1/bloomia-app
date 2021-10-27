@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import "./profile.css";
-import avatar from "./images/avatar.jpg";
 
 import axios from "axios";
 
 import Password from "../Password/Password";
-const Profile = () => {
+
+const Profile = (props) => {
   const [first_name, setName] = useState("");
+
   const [last_name, setLastName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [Image, setImage] = useState("");
-  const [selectedFile, setSelectedFile] = useState();
+  const [refresh, setrefresh] = useState(false);
   const history = useHistory();
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     console.log(token);
+
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -32,11 +35,14 @@ const Profile = () => {
         setNumber(response.data.data.contact);
         setEmail(response.data.data.email);
         setImage(response.data.data.profileImage);
+        props.data(response.data.data);
         localStorage.setItem("f_name", response.data.data.first_name);
         localStorage.setItem("l_name", response.data.data.last_name);
       });
-  }, []);
+  }, [refresh]);
   const submitHandler = async (e) => {
+    setIconchnage(true);
+    setDisableReverse(true);
     e.preventDefault();
     let user = { first_name, last_name, number };
     const token = localStorage.getItem("token");
@@ -55,6 +61,7 @@ const Profile = () => {
           if (response.data.message === "updated user successfully") {
             setIconchnage(true);
             alert("Profile updated Successfuly");
+            setrefresh(!refresh);
           } else {
             localStorage.clear();
             alert("Invalid Password");
@@ -73,8 +80,31 @@ const Profile = () => {
     let formData = new FormData();
     formData.append("attachments", event.target.files[0]);
     console.log("Hi form data", formData);
-    // formData.append("attachments", event.target.files);
+
     const token = localStorage.getItem("token");
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      };
+      axios
+        .put("https://bloomia.herokuapp.com/users/upload", formData, config)
+        .then((response) => {
+          setrefresh(!refresh);
+        });
+    } catch (error) {
+      console.log(`the error is: ${error}`);
+    }
+  };
+  // image remove
+  const token = localStorage.getItem("token");
+  const remove = (event) => {
+    setrefresh(!refresh);
+    event.preventDefault();
+    let formData = new FormData();
+    formData.append("attachments", null);
     try {
       const config = {
         headers: {
@@ -89,7 +119,6 @@ const Profile = () => {
       console.log(`the error is: ${error}`);
     }
   };
-
   // Icon
   const [iconChange, setIconchnage] = useState(true);
   const [disableReverse, setDisableReverse] = useState(true);
@@ -101,6 +130,7 @@ const Profile = () => {
     setIconchnage(true);
     setDisableReverse(true);
   };
+
   return (
     <>
       <button className="slide" onClick={clickHandler}>
@@ -119,9 +149,23 @@ const Profile = () => {
           />
 
           <div className="avatar">
-            <img src={"https://bloomia.herokuapp.com/" + Image} alt="avatar" />
+            <img
+              key={Date.now()}
+              src={"https://bloomia.herokuapp.com/" + Image}
+              alt="avatar"
+            />
           </div>
-
+          <div
+            className="remove text-danger "
+            onClick={remove}
+            style={{
+              cursor: "pointer",
+              fontSize: "0.8rem",
+              marginLeft: "10px",
+            }}
+          >
+            remove Image
+          </div>
           <i
             className="fa fa-pencil "
             onClick={() => imageUploader.current.click()}

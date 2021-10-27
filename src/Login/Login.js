@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
 import { useHistory } from "react-router";
@@ -30,29 +30,8 @@ const Login = () => {
             const userinfo1 = localStorage.getItem("token");
             console.log("Mukesh", userinfo1);
             if (response.data.sucess) {
-              const config = {
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: "Bearer " + response.data.token,
-                },
-              };
-              axios
-                .get("https://bloomia.herokuapp.com/users/getUser", config)
-                .then((response) => {
-                  console.log(response);
-                  setName(response.data.data.first_name);
-                  setLastName(response.data.data.last_name);
-                  setImage(response.data.data.profileImage);
-                  localStorage.setItem("f_name", response.data.data.first_name);
-                  localStorage.setItem("l_name", response.data.data.last_name);
-                  localStorage.setItem(
-                    "Image",
-                    response.data.data.profileImage
-                  );
-                  history.push("/");
-                });
-
               alert("user Login Successfully");
+              history.push("/");
             } else {
               localStorage.clear();
               alert("Invalid Details");

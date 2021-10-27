@@ -1,12 +1,34 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import "./Sidebar.css";
 import Header from "../Components/Header";
 import Profile from "../Profile/Profile";
 import Setting from "../Setting/Setting";
-
+import axios from "axios";
 const SideBar = () => {
+  const [userData, setUserData] = useState({});
+  const Data = (value) => {
+    setUserData(value);
+  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    axios
+      .get("https://bloomia.herokuapp.com/users/getUser", config)
+      .then((response) => {
+        console.log(response);
+        setUserData(response.data.data);
+      });
+  }, []);
+
   return (
     <>
       <button
@@ -39,10 +61,14 @@ const SideBar = () => {
         <div className="offcanvas-body">
           <div className="p-1">
             <Router>
-              <Header />
+              <Header Ondata={userData} />
 
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/" component={Setting} />
+              <Route exact path="/profile">
+                <Profile data={Data} />
+              </Route>
+              <Route exact path="/">
+                <Setting />
+              </Route>
             </Router>
           </div>
         </div>

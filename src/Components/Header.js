@@ -1,25 +1,14 @@
 import React, { useState, useEffect } from "react";
-
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import avatar from "./images/avatar.jpg";
-
 import "./Header.css";
-const Header = () => {
+const Header = (props) => {
   const history = useHistory();
   const token = localStorage.getItem("token");
 
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [fname, setFName] = useState("");
-  const [lname, setLName] = useState("");
-  const [image, setImage] = useState("");
-  let useName = `${fname} ${lname} `;
   useEffect(() => {
     setIsLoggedIn(token);
-    console.log(localStorage.getItem("f_name"));
-    setFName(localStorage.getItem("f_name"));
-    setLName(localStorage.getItem("l_name"));
-    setImage(localStorage.getItem("Image"));
   }, []);
   const logoutHandler = () => {
     localStorage.removeItem("token");
@@ -35,7 +24,9 @@ const Header = () => {
           <div className="user">
             Welcome,
             <br />
-            <h4>{useName}</h4>
+            <h4>
+              {props.Ondata.first_name} {props.Ondata.last_name}
+            </h4>
           </div>
           <button
             className=" dropdown-toggle"
@@ -47,7 +38,10 @@ const Header = () => {
             {
               <img
                 className="headerIcon"
-                src={"https://bloomia.herokuapp.com/" + image}
+                key={Date.now()}
+                src={
+                  "https://bloomia.herokuapp.com/" + props.Ondata.profileImage
+                }
                 alt="avatar"
               />
             }

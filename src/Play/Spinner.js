@@ -5,7 +5,7 @@ import logo from "./video/Logo v1.png";
 import "./Spinner.css";
 const Spinner = () => {
   const [playState, setPlaystate] = useState("running");
-  const [runningTime, setRunningTime] = useState({});
+
   const startanimation = () => {
     if (playState === "paused") {
       setPlaystate("running");
@@ -60,45 +60,6 @@ const Spinner = () => {
             />
           </svg>
         </div>
-        {/* <div className="banner-shadow">
-          <svg class="button" expanded="true" height="500px" width="500px">
-            <circle
-              id="shape"
-              class="circle1"
-              stroke-linecap="round"
-              stroke-dasharray="1256"
-              stroke-dashoffset="0"
-              cx="50%"
-              cy="50%"
-              r="30%"
-              stroke="#fd7279"
-              stroke-width="3%"
-              fill="none"
-            ></circle>
-            <circle
-              id="innercircle"
-              class="circle innerCircle"
-              cx="50%"
-              cy="50%"
-              r="25%"
-              fill="#2f45c5"
-            ></circle>
-          </svg>
-          <i
-            className={toggle ? "fa fa-play" : "fa fa-pause"}
-            onClick={clickChnage}
-          ></i>
-          <div className="timer" id="demo"></div>
-          <div id="squeezetype" className="timer-type"></div>
-        </div> */}
-        {/* <div class="banner-shadow">
-          <p className="number">1</p>
-          <i
-            className={toggle ? "fa fa-play" : "fa fa-pause"}
-            onClick={clickChnage}
-          ></i>
-          <p className="content">Content</p>
-        </div> */}
       </section>
     </>
   );
