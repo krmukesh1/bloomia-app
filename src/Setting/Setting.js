@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+
+import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
 const Setting = () => {
   var n = 60;
@@ -8,6 +10,7 @@ const Setting = () => {
   const enableReverse = () => {
     setDisableReverse(!disableReverse);
   };
+
   const [word, setWord] = useState(true);
   let btn_class = word ? "fa fa-sm-word" : "fa fa-sm-words";
   const colorChange = () => {
@@ -18,6 +21,12 @@ const Setting = () => {
   const colorChangeVolume = () => {
     setVolume(!volume);
   };
+  const [value, setValue] = useState(0);
+  const updateValue = (element) => {
+    console.log(element);
+    setValue(element);
+  };
+
   return (
     <div>
       <div className="setting mt-4">
@@ -40,7 +49,15 @@ const Setting = () => {
         <option value="opel">Advanced</option>
         <option value="audi">Quick</option>
       </select>
-
+      <div className="drop">
+        <DropdownButton title={value} value={value}>
+          {arr.map((element, index) => (
+            <Dropdown.Item onClick={() => updateValue(element)} key={index}>
+              {element}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      </div>
       <div className="bg-grey pb-4" id="spinner-control">
         <form className="row formSetting position-relative">
           <div className="col-12">
