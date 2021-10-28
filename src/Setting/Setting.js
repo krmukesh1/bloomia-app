@@ -21,10 +21,23 @@ const Setting = () => {
   const colorChangeVolume = () => {
     setVolume(!volume);
   };
-  const [value, setValue] = useState(0);
-  const updateValue = (element) => {
-    console.log(element);
-    setValue(element);
+  const [value, setValue] = useState({
+    a1: 1,
+    a2: 1,
+    a3: 1,
+    b1: 1,
+    b2: 1,
+    b3: 1,
+    c1: 0,
+    c2: 0,
+    c3: 0,
+  });
+  const updateValue = (element, key) => {
+    console.log(element, value);
+    let state = { ...value };
+    state[key] = element;
+
+    setValue(state);
   };
 
   return (
@@ -49,7 +62,15 @@ const Setting = () => {
         <option value="opel">Advanced</option>
         <option value="audi">Quick</option>
       </select>
-
+      {/* <div className="select">
+        <DropdownButton title={value} >
+          {arr.map((element, index) => (
+            <Dropdown.Item onClick={() => updateValue(element)} key={index}>
+              {element}
+            </Dropdown.Item>
+          ))}
+        </DropdownButton>
+      </div> */}
       <div className="bg-grey pb-4" id="spinner-control">
         <form className="row formSetting position-relative">
           <div className="col-12">
@@ -57,10 +78,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.a1}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "a1")}
                     key={index}
                   >
                     {element}
@@ -72,10 +93,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.a2}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "a2")}
                     key={index}
                   >
                     {element}
@@ -87,10 +108,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.a3}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "a3")}
                     key={index}
                   >
                     {element}
@@ -106,10 +127,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.b1}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "b1")}
                     key={index}
                   >
                     {element}
@@ -121,10 +142,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.b2}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "b2")}
                     key={index}
                   >
                     {element}
@@ -136,10 +157,10 @@ const Setting = () => {
           </div>
           <div className=" form-group col-4">
             <div className="drop">
-              <DropdownButton title={value} value={value}>
+              <DropdownButton title={value.b3}>
                 {arr.map((element, index) => (
                   <Dropdown.Item
-                    onClick={() => updateValue(element)}
+                    onClick={() => updateValue(element, "b3")}
                     key={index}
                   >
                     {element}
@@ -173,10 +194,10 @@ const Setting = () => {
             <div className="row">
               <div className=" form-group col-4">
                 <div className="drop">
-                  <DropdownButton title={value} value={value}>
+                  <DropdownButton title={value.c1}>
                     {arr.map((element, index) => (
                       <Dropdown.Item
-                        onClick={() => updateValue(element)}
+                        onClick={() => updateValue(element, "c1")}
                         key={index}
                       >
                         {element}
@@ -188,10 +209,10 @@ const Setting = () => {
               </div>
               <div className=" form-group col-4">
                 <div className="drop">
-                  <DropdownButton title={value} value={value}>
+                  <DropdownButton title={value.c2}>
                     {arr.map((element, index) => (
                       <Dropdown.Item
-                        onClick={() => updateValue(element)}
+                        onClick={() => updateValue(element, "c2")}
                         key={index}
                       >
                         {element}
@@ -203,10 +224,10 @@ const Setting = () => {
               </div>
               <div className=" form-group col-4">
                 <div className="drop">
-                  <DropdownButton title={value} value={value}>
+                  <DropdownButton title={value.c3}>
                     {arr.map((element, index) => (
                       <Dropdown.Item
-                        onClick={() => updateValue(element)}
+                        onClick={() => updateValue(element, "c3")}
                         key={index}
                       >
                         {element}
