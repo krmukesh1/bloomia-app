@@ -6,7 +6,7 @@
   opacity: 0.9;
   color: #000;
   width: 100px;
-  border: 1px solid #000;
+  border: 1px solid #fff;
 }
 .drop .dropdown-menu.show {
   min-width: 6rem;
@@ -17,4 +17,12 @@
   border: 0;
   border-radius: 10px;
   box-shadow: 0 1px 4px 0 #dadada !important;
+}
+.drop .dropdown-menu {
+  transform: translate(0px, 40px);
+}
+.drop button.dropdown-toggle.btn.btn-primary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

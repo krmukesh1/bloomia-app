@@ -49,73 +49,55 @@ const Setting = () => {
         <option value="opel">Advanced</option>
         <option value="audi">Quick</option>
       </select>
-      <div className="drop">
-        <DropdownButton title={value} value={value}>
-          {arr.map((element, index) => (
-            <Dropdown.Item onClick={() => updateValue(element)} key={index}>
-              {element}
-            </Dropdown.Item>
-          ))}
-        </DropdownButton>
-      </div>
+
       <div className="bg-grey pb-4" id="spinner-control">
         <form className="row formSetting position-relative">
           <div className="col-12">
             <h6 className="float-left mt-3">Long Squeeze</h6>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="a1"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option key={index} aria-labelledby="cars">
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Squeeze Seconds</div>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="a2"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option key={index} aria-labelledby="cars">
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Rest Seconds</div>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="a3"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option
-                  key={index}
-                  aria-labelledby="cars"
-                  aria-labelledby="cars"
-                >
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Reps</div>
           </div>
 
@@ -123,54 +105,48 @@ const Setting = () => {
             <h6 className="float-left">Short Squeeze</h6>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="b1"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option key={index} aria-labelledby="cars">
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Squeeze Seconds</div>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="b2"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option key={index} aria-labelledby="cars">
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Rest Seconds</div>
           </div>
           <div className=" form-group col-4">
-            <select
-              id="cars"
-              name="b3"
-              className="form-control"
-              className="btn dropdown-toggle"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              {arr.map((element, index) => (
-                <option key={index} aria-labelledby="cars">
-                  {element}
-                </option>
-              ))}
-            </select>
+            <div className="drop">
+              <DropdownButton title={value} value={value}>
+                {arr.map((element, index) => (
+                  <Dropdown.Item
+                    onClick={() => updateValue(element)}
+                    key={index}
+                  >
+                    {element}
+                  </Dropdown.Item>
+                ))}
+              </DropdownButton>
+            </div>
             <div className="title-section">Reps</div>
           </div>
           <div className="col-12 mt-5">
@@ -196,54 +172,48 @@ const Setting = () => {
           <fieldset disabled={disableReverse}>
             <div className="row">
               <div className=" form-group col-4">
-                <select
-                  id="cars"
-                  name="b1"
-                  className="form-control"
-                  className="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {arr.map((element, index) => (
-                    <option key={index} aria-labelledby="cars">
-                      {element}
-                    </option>
-                  ))}
-                </select>
+                <div className="drop">
+                  <DropdownButton title={value} value={value}>
+                    {arr.map((element, index) => (
+                      <Dropdown.Item
+                        onClick={() => updateValue(element)}
+                        key={index}
+                      >
+                        {element}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </div>
                 <div className="title-section">Squeeze Seconds</div>
               </div>
               <div className=" form-group col-4">
-                <select
-                  id="cars"
-                  name="b2"
-                  className="form-control"
-                  className="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {arr.map((element, index) => (
-                    <option key={index} aria-labelledby="cars">
-                      {element}
-                    </option>
-                  ))}
-                </select>
+                <div className="drop">
+                  <DropdownButton title={value} value={value}>
+                    {arr.map((element, index) => (
+                      <Dropdown.Item
+                        onClick={() => updateValue(element)}
+                        key={index}
+                      >
+                        {element}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </div>
                 <div className="title-section">Rest Seconds</div>
               </div>
               <div className=" form-group col-4">
-                <select
-                  id="cars"
-                  name="b3"
-                  className="form-control"
-                  className="btn dropdown-toggle"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  {arr.map((element, index) => (
-                    <option key={index} aria-labelledby="cars">
-                      {element}
-                    </option>
-                  ))}
-                </select>
+                <div className="drop">
+                  <DropdownButton title={value} value={value}>
+                    {arr.map((element, index) => (
+                      <Dropdown.Item
+                        onClick={() => updateValue(element)}
+                        key={index}
+                      >
+                        {element}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </div>
                 <div className="title-section">Reps</div>
               </div>
             </div>

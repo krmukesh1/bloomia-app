@@ -168,6 +168,9 @@ const Profile = (props) => {
           axios
             .put("https://bloomia.herokuapp.com/users/upload", formData, config)
             .then((response) => {
+              setpreviewbox(false);
+              setcropbox(false);
+              setrefresh(!refresh);
               setrefresh(!refresh);
             });
         } catch (error) {
