@@ -39,7 +39,11 @@ const Setting = () => {
 
     setValue(state);
   };
-
+  const levelArr = ["Beginner", "Intermediate", "Advanced", "Quick"];
+  const [level, setLevel] = useState("Beginner");
+  const selectValue = (ele) => {
+    setLevel(ele);
+  };
   return (
     <div>
       <div className="setting mt-4">
@@ -56,21 +60,15 @@ const Setting = () => {
         </div>
       </div>
 
-      <select id="car" name="carlist" form="carform ">
-        <option value="volvo">Beginner</option>
-        <option value="saab">Quick</option>
-        <option value="opel">Advanced</option>
-        <option value="audi">Quick</option>
-      </select>
-      {/* <div className="select">
-        <DropdownButton title={value} >
-          {arr.map((element, index) => (
-            <Dropdown.Item onClick={() => updateValue(element)} key={index}>
-              {element}
+      <div className="select">
+        <DropdownButton title={level}>
+          {levelArr.map((ele, index) => (
+            <Dropdown.Item onClick={() => selectValue(ele)} key={index}>
+              {ele}
             </Dropdown.Item>
           ))}
         </DropdownButton>
-      </div> */}
+      </div>
       <div className="bg-grey pb-4" id="spinner-control">
         <form className="row formSetting position-relative">
           <div className="col-12">

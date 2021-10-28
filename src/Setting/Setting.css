@@ -26,3 +26,22 @@
   justify-content: space-between;
   align-items: center;
 }
+.select button.dropdown-toggle.btn.btn-primary {
+  background: #fff;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: navajowhite;
+  width: 114px;
+  font-size: 1.35rem !important;
+  padding: 0;
+  font-family: "Gilroy-SemiBold";
+}
+.select .dropdown {
+  display: flex;
+  justify-content: start;
+}
+.select .dropdown-menu {
+  transform: translate(0px, 40px);
+}
