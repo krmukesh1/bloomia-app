@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import "./profile.css";
-
 import axios from "axios";
-
 import Password from "../Password/Password";
+import "react-image-crop/dist/ReactCrop.css";
+import ImageCropper from "./ImageCropper";
 
 const Profile = (props) => {
   const [first_name, setName] = useState("");
@@ -80,7 +80,16 @@ const Profile = (props) => {
     let formData = new FormData();
     formData.append("attachments", event.target.files[0]);
     console.log("Hi form data", formData);
-
+    if (event.target.files && event.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        const image = reader.result;
+        setImageToCrop(image);
+        setmodelbox(true);
+        setcropbox(true);
+      });
+      reader.readAsDataURL(event.target.files[0]);
+    }
     const token = localStorage.getItem("token");
     try {
       const config = {
@@ -130,7 +139,54 @@ const Profile = (props) => {
     setIconchnage(true);
     setDisableReverse(true);
   };
+  // image Cropper
+  const [modelbox, setmodelbox] = useState(true);
+  const [previewbox, setpreviewbox] = useState(false);
+  const [cropbox, setcropbox] = useState(false);
+  const [imageToCrop, setImageToCrop] = useState(undefined);
+  const [croppedImage, setCroppedImage] = useState(undefined);
 
+  const onSubmitfile = (e) => {
+    e.preventDefault();
+    fetch(croppedImage)
+      .then((res) => res.blob())
+      .then((blob) => {
+        const file = new File([blob], "mukesh.png", { type: "image/png" });
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append("attachments", file);
+        console.log("Hi form data", formData);
+
+        const token = localStorage.getItem("token");
+        try {
+          const config = {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + token,
+            },
+          };
+          axios
+            .put("https://bloomia.herokuapp.com/users/upload", formData, config)
+            .then((response) => {
+              setrefresh(!refresh);
+            });
+        } catch (error) {
+          console.log(`the error is: ${error}`);
+        }
+      });
+  };
+
+  const showPreview = () => {
+    setcropbox(false);
+    setpreviewbox(true);
+  };
+  const cancelmodel = () => {
+    setcropbox(false);
+    setpreviewbox(false);
+  };
+  const backPreview = () => {
+    setcropbox(true);
+  };
   return (
     <>
       <button className="slide" onClick={clickHandler}>
@@ -138,15 +194,88 @@ const Profile = (props) => {
       </button>
       <div className="container-fluid">
         <div className="col-12 image_Uploader">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={imageSubmit}
-            ref={imageUploader}
-            style={{
-              display: "none",
-            }}
-          />
+          {modelbox && (
+            <div className="col-8 model-box">
+              <form
+                className="row position-relative"
+                method="POST"
+                action="#"
+                id="#"
+                onSubmit={onSubmitfile}
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={imageSubmit}
+                  ref={imageUploader}
+                  style={{
+                    display: "none",
+                  }}
+                />
+                {cropbox && (
+                  <div className="app crop-box">
+                    <h4>Adjust the image</h4>
+                    <div>
+                      <ImageCropper
+                        imageToCrop={imageToCrop}
+                        onImageCropped={(croppedImage) =>
+                          setCroppedImage(croppedImage)
+                        }
+                      />
+                    </div>
+                    <div
+                      style={{ cursor: "pointer" }}
+                      className="bg-danger rounded save-button mx-auto "
+                      onClick={cancelmodel}
+                    >
+                      cancel
+                    </div>
+                    <div
+                      className="bg-success rounded save-button mx-auto my-1"
+                      style={{ cursor: "pointer" }}
+                      onClick={showPreview}
+                    >
+                      preview
+                    </div>
+                  </div>
+                )}
+
+                {previewbox && (
+                  <div className="preview-box" id="preview-box">
+                    {croppedImage && (
+                      <div>
+                        <img
+                          className="Cropped_Img"
+                          alt="Cropped Img"
+                          src={croppedImage}
+                        />
+                        <div
+                          style={{ cursor: "pointer" }}
+                          className="bg-danger rounded save-button mt-2 mx-auto c"
+                          onClick={backPreview}
+                        >
+                          back
+                        </div>
+                        <button className="bg-success rounded m-1 save-button">
+                          Save
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </form>
+            </div>
+          )}
+
+          {/* <input
+              type="file"
+              accept="image/*"
+              onChange={imageSubmit}
+              ref={imageUploader}
+              style={{
+                display: "none",
+              }}
+            /> */}
 
           <div className="avatar">
             <img

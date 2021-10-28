@@ -12,6 +12,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/password" component={Password} />
+
         <Route path="/" component={Home} />
       </Switch>
     </BrowserRouter>
