@@ -90,22 +90,22 @@ const Profile = (props) => {
       });
       reader.readAsDataURL(event.target.files[0]);
     }
-    const token = localStorage.getItem("token");
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      };
-      axios
-        .put("https://bloomia.herokuapp.com/users/upload", formData, config)
-        .then((response) => {
-          setrefresh(!refresh);
-        });
-    } catch (error) {
-      console.log(`the error is: ${error}`);
-    }
+    // const token = localStorage.getItem("token");
+    // try {
+    //   const config = {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: "Bearer " + token,
+    //     },
+    //   };
+    //   axios
+    //     .put("https://bloomia.herokuapp.com/users/upload", formData, config)
+    //     .then((response) => {
+    //       setrefresh(!refresh);
+    //     });
+    // } catch (error) {
+    //   console.log(`the error is: ${error}`);
+    // }
   };
   // image remove
   const token = localStorage.getItem("token");
