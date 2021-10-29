@@ -8,7 +8,6 @@ import ImageCropper from "./ImageCropper";
 
 const Profile = (props) => {
   const [first_name, setName] = useState("");
-
   const [last_name, setLastName] = useState("");
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
@@ -36,8 +35,6 @@ const Profile = (props) => {
         setEmail(response.data.data.email);
         setImage(response.data.data.profileImage);
         props.data(response.data.data);
-        localStorage.setItem("f_name", response.data.data.first_name);
-        localStorage.setItem("l_name", response.data.data.last_name);
       });
   }, [refresh]);
   const submitHandler = async (e) => {
@@ -90,22 +87,6 @@ const Profile = (props) => {
       });
       reader.readAsDataURL(event.target.files[0]);
     }
-    // const token = localStorage.getItem("token");
-    // try {
-    //   const config = {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: "Bearer " + token,
-    //     },
-    //   };
-    //   axios
-    //     .put("https://bloomia.herokuapp.com/users/upload", formData, config)
-    //     .then((response) => {
-    //       setrefresh(!refresh);
-    //     });
-    // } catch (error) {
-    //   console.log(`the error is: ${error}`);
-    // }
   };
   // image remove
   const token = localStorage.getItem("token");
