@@ -34,7 +34,7 @@ const Setting = () => {
     c2: 0,
     c3: 0,
   });
-  var [counter, setCounter] = useState(1);
+  var [counter, setCounter] = useState(0);
   var [counterStatus, setCounterStatus] = useState(true);
   var [intervalId, setTntervalId] = useState(0);
   const interval = useRef(null);

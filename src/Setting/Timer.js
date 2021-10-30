@@ -11,7 +11,6 @@ const Timer = () => {
         setMinutes(minutes + 1);
         setSeconds(0);
       }
-      console.log("mukesh");
     }, 1000);
     return () => clearInterval(timer);
   });
