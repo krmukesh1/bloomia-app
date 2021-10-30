@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
+import Timer from "./Timer";
 const Setting = () => {
   var n = 60;
   const array = [...Array(n)];
@@ -21,6 +22,7 @@ const Setting = () => {
   const colorChangeVolume = () => {
     setVolume(!volume);
   };
+  var [timerCount, setTimerCount] = useState(0);
   const [value, setValue] = useState({
     a1: 1,
     a2: 1,
@@ -32,13 +34,44 @@ const Setting = () => {
     c2: 0,
     c3: 0,
   });
+  var [counter, setCounter] = useState(1);
+  var [counterStatus, setCounterStatus] = useState(true);
+  var [intervalId, setTntervalId] = useState(0);
+  const interval = useRef(null);
+  const settimeouta1 = useRef(null);
   const updateValue = (element, key) => {
-    console.log(element, value);
+    // console.log(element, value);
     let state = { ...value };
     state[key] = element;
-
     setValue(state);
+    setCounter(1);
+    setCounterStatus(true);
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    const ivtId = setInterval(() => {
+      setCounter((counter) => counter + 1);
+    }, 1000);
+    setTntervalId(ivtId);
   };
+  useEffect(() => {
+    console.log(counter);
+    if (intervalId && counter >= value.a1) {
+      clearInterval(intervalId);
+    }
+  });
+  // const delay = 1;
+  // useEffect(() => {
+  //   interval.current = setInterval(() => {
+  //     setTimerCount(timerCount++);
+  //     console.log("value", timerCount);
+  //   }, delay * 1000);
+  //   settimeouta1.current = setTimeout(() => {
+  //     setTimerCount(0);
+  //     clearInterval(interval.current);
+  //     console.log("cleared interval according to your interval");
+  //   }, value.a1 * 1000);
+  // }, [value]);
   const levelArr = ["Beginner", "Intermediate", "Advanced", "Quick"];
   const [level, setLevel] = useState("Beginner");
   const selectValue = (ele) => {
@@ -59,7 +92,8 @@ const Setting = () => {
           <i className={btn_volume} onClick={colorChangeVolume}></i>
         </div>
       </div>
-
+      <Timer />
+      <span>Timer value: {counter}</span>
       <div className="select">
         <DropdownButton title={level}>
           {levelArr.map((ele, index) => (

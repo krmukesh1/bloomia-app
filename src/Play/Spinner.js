@@ -4,7 +4,7 @@ import logo from "./video/Logo v1.png";
 
 import "./Spinner.css";
 const Spinner = () => {
-  const [playState, setPlaystate] = useState("running");
+  const [playState, setPlaystate] = useState("paused");
 
   const startanimation = () => {
     if (playState === "paused") {
@@ -12,14 +12,21 @@ const Spinner = () => {
       document.getElementById("shape").style.animationPlayState = playState;
       document.getElementById("innercircle").style.animationPlayState =
         playState;
-      document.getElementById("play-icon").classList.add("d-none");
-      document.getElementById("paused-icon").classList.remove("d-none");
-    } else {
-      setPlaystate("paused");
+      document.getElementById("shape").classList.add("circle2");
+      document.getElementById("innercircle").classList.add("innerCircle2");
+
       document.getElementById("paused-icon").classList.add("d-none");
       document.getElementById("play-icon").classList.remove("d-none");
+    } else {
+      setPlaystate("paused");
+      document.getElementById("play-icon").classList.add("d-none");
+      document.getElementById("paused-icon").classList.remove("d-none");
+      document.getElementById("shape").style.animationPlayState = playState;
+      document.getElementById("innercircle").style.animationPlayState =
+        playState;
     }
   };
+
   return (
     <>
       <section id="banner">
