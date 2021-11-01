@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
 import Timer from "./Timer";
-const Setting = () => {
+const Setting = (props) => {
   var n = 60;
   const array = [...Array(n)];
   const arr = array.map((item, index) => index + 1);
@@ -51,15 +51,17 @@ const Setting = () => {
     }
     const ivtId = setInterval(() => {
       setCounter((counter) => counter + 1);
-    }, 1000);
+    }, 1.2 * 1000);
     setTntervalId(ivtId);
   };
   useEffect(() => {
-    console.log(counter);
+    // console.log(counter);
+    props.datavalue(value);
     if (intervalId && counter >= value.a1) {
       clearInterval(intervalId);
     }
   });
+
   // const delay = 1;
   // useEffect(() => {
   //   interval.current = setInterval(() => {

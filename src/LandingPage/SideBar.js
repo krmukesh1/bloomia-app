@@ -6,10 +6,14 @@ import Header from "../Components/Header";
 import Profile from "../Profile/Profile";
 import Setting from "../Setting/Setting";
 import axios from "axios";
-const SideBar = () => {
+const SideBar = (props) => {
   const [userData, setUserData] = useState({});
   const Data = (value) => {
     setUserData(value);
+  };
+  const count = (value1) => {
+    console.log(value1, "mukesh");
+    props.datahome(value1);
   };
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -67,7 +71,7 @@ const SideBar = () => {
                 <Profile data={Data} />
               </Route>
               <Route exact path="/">
-                <Setting />
+                <Setting datavalue={count} />
               </Route>
             </Router>
           </div>

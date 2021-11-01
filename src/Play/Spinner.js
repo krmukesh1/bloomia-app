@@ -3,7 +3,7 @@ import backvideo from "./video/Light Mode.mp4";
 import logo from "./video/Logo v1.png";
 
 import "./Spinner.css";
-const Spinner = () => {
+const Spinner = (props) => {
   const [playState, setPlaystate] = useState("paused");
 
   const startanimation = () => {
@@ -26,7 +26,7 @@ const Spinner = () => {
         playState;
     }
   };
-
+  console.log(props.SpinnerValue);
   return (
     <>
       <section id="banner">
@@ -38,6 +38,7 @@ const Spinner = () => {
         </div>
         <div className="timer" id="demo"></div>
         <div className="display-time banner-shadow">
+          {/* <p>{props.SpinnerValue.a1}</p> */}
           <div className="play-button" onClick={startanimation}>
             <i id="play-icon" className="fa fa-play text-light"></i>
             <i id="paused-icon" className="fa fa-pause text-light d-none"></i>
