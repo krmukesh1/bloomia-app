@@ -8,7 +8,9 @@ const Spinner = (props) => {
   // const [timeCount, setTimeCount] = useState({});
   console.log(props.SpinnerValue);
   const rep = useRef(null);
+  const lshort = useRef(null);
   const reps = useRef(null);
+  const sshort = useRef(null);
 
   const start = () => {
     setPlaystate("running");
@@ -17,16 +19,16 @@ const Spinner = (props) => {
   };
   let i = props.SpinnerValue.a3;
   let j = props.SpinnerValue.b3;
-  // let i = 2;
-  console.log(i, "brain");
-  let time = 0;
+
   const pause = () => {
     clearInterval(rep.current);
+    clearInterval(lshort.current);
+    clearInterval(reps.current);
+    clearInterval(sshort.current);
+
     setPlaystate("paused");
     document.getElementById("shape").style.animationPlayState = "paused";
     document.getElementById("innercircle").style.animationPlayState = "paused";
-    document.getElementById("shape").style.animationDuration = `${time}s`;
-    document.getElementById("innercircle").style.animationDuration = `${time}s`;
   };
 
   function longfunction() {
@@ -37,7 +39,8 @@ const Spinner = (props) => {
     ).style.animationDuration = `${props.SpinnerValue.a1}s`;
     document.getElementById("prop").innerText = `${props.SpinnerValue.a1}s`;
     document.getElementById("name").innerText = `Long Squeeze`;
-    setTimeout(() => {
+    rep.current = setTimeout(() => {
+      clearInterval(rep.current);
       rest();
     }, props.SpinnerValue.a1 * 1000);
   }
@@ -51,7 +54,8 @@ const Spinner = (props) => {
     document.getElementById("name").innerText = `Rest`;
 
     console.log(i, "brain");
-    rep.current = setTimeout(() => {
+    lshort.current = setTimeout(() => {
+      clearInterval(lshort.current);
       i--;
       if (i === 0) {
         short();
@@ -75,7 +79,8 @@ const Spinner = (props) => {
     ).style.animationDuration = `${props.SpinnerValue.b1}s`;
     document.getElementById("prop").innerText = `${props.SpinnerValue.b1}s`;
     document.getElementById("name").innerText = `Short Squeeze`;
-    setTimeout(() => {
+    reps.current = setTimeout(() => {
+      clearInterval(reps.current);
       shortRest();
     }, props.SpinnerValue.b1 * 1000);
   }
@@ -93,7 +98,8 @@ const Spinner = (props) => {
     document.getElementById("prop").innerText = `${props.SpinnerValue.b2}s`;
     document.getElementById("name").innerText = `Rest`;
     console.log(j, "Inventory");
-    reps.current = setTimeout(() => {
+    sshort.current = setTimeout(() => {
+      clearInterval(sshort.current);
       j--;
       if (j === 0) {
         iconChnage();
