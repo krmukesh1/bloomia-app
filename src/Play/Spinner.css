@@ -66,7 +66,7 @@ p.content {
   position: absolute;
   left: 43%;
 }
-@keyframes example {
+@keyframes circle {
   100% {
     r: 26%;
   }
@@ -80,15 +80,34 @@ p.content {
     r: 26%;
   }
 }
-.innerCircle2 {
-  animation-name: example;
+@keyframes circle2 {
+  100% {
+    r: 26%;
+  }
+  50% {
+    r: 22%;
+  }
+  25% {
+    r: 15%;
+  }
+  0% {
+    r: 26%;
+  }
+}
+.innerCircle1 {
+  animation-name: circle1;
   animation-duration: unset;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
+  /* animation-iteration-count: infinite; */
   animation-timing-function: linear;
   transition: all ease-in-out;
 }
-
+.innerCircle2 {
+  animation-name: circle2;
+  animation-duration: unset;
+  /* animation-iteration-count: infinite; */
+  animation-timing-function: linear;
+  transition: all ease-in-out;
+}
 @keyframes example1 {
   from {
     stroke-dashoffset: 1256;
@@ -97,21 +116,20 @@ p.content {
     stroke-dashoffset: 0;
   }
 }
-
-.circle2 {
-  animation-name: example1;
-  animation-duration: unset;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  stroke-width: 10;
+@keyframes example2 {
+  from {
+    stroke-dashoffset: 1256;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
+
 #shape {
   transform: rotate(-90deg);
   transition: 0s;
   transform-origin: center;
   animation-delay: 0s;
-  animation-iteration-count: infinite;
   animation-timing-function: linear;
   stroke-width: 10;
 }
@@ -123,4 +141,25 @@ p.content {
   transform-origin: center;
   animation-delay: 0s;
   animation-timing-function: linear;
+}
+.circle1 {
+  animation-name: example2;
+  transform: rotate(-90deg);
+  transition: 0s;
+  transform-origin: center;
+  animation-delay: 0s;
+  animation-timing-function: linear;
+}
+p#prop {
+  top: 28%;
+  position: absolute;
+  left: 50%;
+  color: #fff;
+}
+p#name {
+  position: absolute;
+  top: 64%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
 }
