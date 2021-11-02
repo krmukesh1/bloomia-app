@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import backvideo from "./video/Light Mode.mp4";
 import logo from "./video/Logo v1.png";
 
@@ -7,21 +7,35 @@ const Spinner = (props) => {
   const [playState, setPlaystate] = useState("paused");
   // const [timeCount, setTimeCount] = useState({});
   console.log(props.SpinnerValue);
+  const rep = useRef(null);
+  const reps = useRef(null);
+
   const start = () => {
     setPlaystate("running");
     document.getElementById("shape").style.animationPlayState = "running";
     longfunction();
   };
+  let i = props.SpinnerValue.a3;
+  let j = props.SpinnerValue.b3;
+  // let i = 2;
+  console.log(i, "brain");
+  let time = 0;
   const pause = () => {
+    clearInterval(rep.current);
     setPlaystate("paused");
     document.getElementById("shape").style.animationPlayState = "paused";
+    document.getElementById("innercircle").style.animationPlayState = "paused";
+    document.getElementById("shape").style.animationDuration = `${time}s`;
+    document.getElementById("innercircle").style.animationDuration = `${time}s`;
   };
+
   function longfunction() {
     document.getElementById("shape").classList.add("circle2");
     document.getElementById("shape").classList.remove("circle1");
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.a1}s`;
+    document.getElementById("prop").innerText = `${props.SpinnerValue.a1}s`;
     document.getElementById("name").innerText = `Long Squeeze`;
     setTimeout(() => {
       rest();
@@ -33,10 +47,17 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.a2}s`;
-
+    document.getElementById("prop").innerText = `${props.SpinnerValue.a2}s`;
     document.getElementById("name").innerText = `Rest`;
-    setTimeout(() => {
-      short();
+
+    console.log(i, "brain");
+    rep.current = setTimeout(() => {
+      i--;
+      if (i === 0) {
+        short();
+        return;
+      }
+      longfunction();
       // iconChnage();
     }, props.SpinnerValue.a2 * 1000);
   }
@@ -46,11 +67,13 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.b1}s`;
+
     document.getElementById("innercircle").classList.add("innerCircle2");
     document.getElementById("innercircle").classList.remove("innerCircle1");
     document.getElementById(
       "innercircle"
     ).style.animationDuration = `${props.SpinnerValue.b1}s`;
+    document.getElementById("prop").innerText = `${props.SpinnerValue.b1}s`;
     document.getElementById("name").innerText = `Short Squeeze`;
     setTimeout(() => {
       shortRest();
@@ -67,11 +90,18 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.b2}s`;
-
+    document.getElementById("prop").innerText = `${props.SpinnerValue.b2}s`;
     document.getElementById("name").innerText = `Rest`;
-    setTimeout(() => {
-      iconChnage();
-    }, props.SpinnerValue.b2 * 1000);
+    console.log(j, "Inventory");
+    reps.current = setTimeout(() => {
+      j--;
+      if (j === 0) {
+        iconChnage();
+        return;
+      }
+      short();
+      // iconChnage();
+    }, props.SpinnerValue.a2 * 1000);
   }
   function iconChnage() {
     setPlaystate("paused");
@@ -87,9 +117,7 @@ const Spinner = (props) => {
         </div>
         <div className="timer" id="demo"></div>
         <div className="display-time banner-shadow">
-          <p className="prop" id="prop">
-            0
-          </p>
+          <p className="prop" id="prop"></p>
           <div className="play-button">
             {playState === "paused" && (
               <i
