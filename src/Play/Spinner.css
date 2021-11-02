@@ -126,7 +126,7 @@ p.content {
 }
 
 #shape {
-  transform: rotate(-90deg);
+  transform: scaleX(1) rotate(-90deg);
   transition: 0s;
   transform-origin: center;
   animation-delay: 0s;

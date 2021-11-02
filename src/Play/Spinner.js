@@ -6,6 +6,8 @@ import "./Spinner.css";
 const Spinner = (props) => {
   const [playState, setPlaystate] = useState("paused");
   // const [timeCount, setTimeCount] = useState({});
+
+  // const [long, setLong] = useState(5);
   console.log(props.SpinnerValue);
   const rep = useRef(null);
   const lshort = useRef(null);
@@ -17,6 +19,8 @@ const Spinner = (props) => {
     document.getElementById("shape").style.animationPlayState = "running";
     longfunction();
   };
+  // let long = props.SpinnerValue.a1;
+  let long = props.SpinnerValue.a1;
   let i = props.SpinnerValue.a3;
   let j = props.SpinnerValue.b3;
 
@@ -25,7 +29,6 @@ const Spinner = (props) => {
     clearInterval(lshort.current);
     clearInterval(reps.current);
     clearInterval(sshort.current);
-
     setPlaystate("paused");
     document.getElementById("shape").style.animationPlayState = "paused";
     document.getElementById("innercircle").style.animationPlayState = "paused";
@@ -37,10 +40,18 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.a1}s`;
-    document.getElementById("prop").innerText = `${props.SpinnerValue.a1}s`;
+    document.getElementById("prop").innerText = `${long}s`;
     document.getElementById("name").innerText = `Long Squeeze`;
+    let timer = setInterval(() => {
+      long--;
+      console.log("long", long);
+      if (long === 0) {
+        clearInterval(timer);
+      }
+    }, 1000);
     rep.current = setTimeout(() => {
       clearInterval(rep.current);
+
       rest();
     }, props.SpinnerValue.a1 * 1000);
   }
