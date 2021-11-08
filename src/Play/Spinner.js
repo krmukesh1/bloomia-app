@@ -5,6 +5,7 @@ import logo from "./video/Logo v1.png";
 import "./Spinner.css";
 const Spinner = (props) => {
   const [playState, setPlaystate] = useState("paused");
+  const [newTime, setnewTime] = useState({});
   const [leftTime, setLeftTime] = useState({});
   const [Squeeze, setSqueeze] = useState(0);
   console.log(props.SpinnerValue);
@@ -33,9 +34,15 @@ const Spinner = (props) => {
   };
   // let long = props.SpinnerValue.a1;
 
-  let i = settingTime.a3;
-  let j = settingTime.b3;
-
+  // let i = settingTime.a3;
+  // let j = settingTime.b3;
+  let i = newTime.a3;
+  let j = newTime.b3;
+  var k = newTime.a1;
+  var l = newTime.a2;
+  var m = newTime.b1;
+  var n = newTime.b2;
+  console.log("iiiiiiii", i, j);
   const pause = () => {
     clearInterval(incrementa1.current);
     clearInterval(incrementa2.current);
@@ -46,11 +53,13 @@ const Spinner = (props) => {
     clearInterval(reps.current);
     clearInterval(sshort.current);
     setPlaystate("paused");
+
     document.getElementById("shape").style.animationPlayState = "paused";
     document.getElementById("innercircle").style.animationPlayState = "paused";
   };
   useEffect(() => {
     setLeftTime(settingTime);
+    setnewTime(settingTime);
   }, [props.SpinnerValue]);
   function longfunction() {
     setSqueeze(1);
@@ -59,7 +68,6 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${settingTime.a1}s`;
-    // document.getElementById("prop").innerText = `${settingTime.a1}s`;
     document.getElementById("name").innerText = `Long Squeeze`;
     incrementa1.current = setInterval(() => {
       setLeftTime((previous) => {
@@ -75,17 +83,15 @@ const Spinner = (props) => {
     rep.current = setTimeout(() => {
       clearInterval(incrementa1.current);
       rest();
-    }, settingTime.a1 * 1000);
+    }, k * 1000);
   }
   function rest() {
     setSqueeze(2);
-
     document.getElementById("shape").classList.add("circle1");
     document.getElementById("shape").classList.remove("circle2");
     document.getElementById(
       "shape"
     ).style.animationDuration = `${settingTime.a2}s`;
-    // document.getElementById("prop").innerText = `${settingTime.a2}s`;
     document.getElementById("name").innerText = `Rest`;
 
     console.log(i, "brain");
@@ -109,7 +115,7 @@ const Spinner = (props) => {
       }
       longfunction();
       // iconChnage();
-    }, settingTime.a2 * 1000);
+    }, l * 1000);
   }
   function short() {
     setSqueeze(3);
@@ -124,7 +130,6 @@ const Spinner = (props) => {
     document.getElementById(
       "innercircle"
     ).style.animationDuration = `${settingTime.b1}s`;
-    // document.getElementById("prop").innerText = `${settingTime.b1}s`;
     document.getElementById("name").innerText = `Short Squeeze`;
     incrementb1.current = setInterval(() => {
       setLeftTime((previous) => {
@@ -140,7 +145,7 @@ const Spinner = (props) => {
     reps.current = setTimeout(() => {
       clearInterval(incrementb1.current);
       shortRest();
-    }, settingTime.b1 * 1000);
+    }, m * 1000);
   }
   function shortRest() {
     setSqueeze(4);
@@ -154,7 +159,6 @@ const Spinner = (props) => {
     document.getElementById(
       "shape"
     ).style.animationDuration = `${props.SpinnerValue.b2}s`;
-    // document.getElementById("prop").innerText = `${settingTime.b2}s`;
     document.getElementById("name").innerText = `Rest`;
     console.log(j, "Inventory");
     incrementb2.current = setInterval(() => {
@@ -178,7 +182,7 @@ const Spinner = (props) => {
       }
       short();
       // iconChnage();
-    }, settingTime.b2 * 1000);
+    }, n * 1000);
   }
   function iconChnage() {
     setPlaystate("paused");
