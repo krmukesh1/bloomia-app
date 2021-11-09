@@ -198,11 +198,15 @@ const Spinner = (props) => {
         longfunction();
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
+        document.getElementById("innercircle").style.animationPlayState =
+          "running";
         break;
       case 2:
         rest();
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
+        document.getElementById("innercircle").style.animationPlayState =
+          "running";
         break;
       case 3:
         short();
