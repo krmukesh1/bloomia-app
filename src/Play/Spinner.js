@@ -4,12 +4,12 @@ import logo from "./video/Logo v1.png";
 
 import "./Spinner.css";
 const Spinner = (props) => {
-  const [playState, setPlaystate] = useState("paused");
   const [newTime, setnewTime] = useState({});
   const [leftTime, setLeftTime] = useState({});
   const [Squeeze, setSqueeze] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [resumebutton, setResumebutton] = useState(0);
   const settingTime = {
     a1: props.SpinnerValue.a1,
     a2: props.SpinnerValue.a2,
@@ -27,13 +27,6 @@ const Spinner = (props) => {
   const reps = useRef(null);
   const sshort = useRef(null);
 
-  const start = () => {
-    setIsPaused(true);
-    setIsActive(true);
-    document.getElementById("shape").style.animationPlayState = "running";
-
-    longfunction();
-  };
   let i = newTime.a3;
   let j = newTime.b3;
   var k = newTime.a1;
@@ -41,21 +34,7 @@ const Spinner = (props) => {
   var m = newTime.b1;
   var n = newTime.b2;
   console.log("mukesh", i, j);
-  const pause = () => {
-    clearInterval(incrementa1.current);
-    clearInterval(incrementa2.current);
-    clearInterval(incrementb1.current);
-    clearInterval(incrementb2.current);
-    clearInterval(rep.current);
-    clearInterval(lshort.current);
-    clearInterval(reps.current);
-    clearInterval(sshort.current);
-    setIsPaused(false);
 
-    document.getElementById("shape").style.animationPlayState = "paused";
-    document.getElementById("innercircle").style.animationPlayState = "paused";
-  };
-  const [resumebutton, setResumebutton] = useState(0);
   useEffect(() => {
     setLeftTime(settingTime);
     setnewTime(settingTime);
@@ -192,7 +171,27 @@ const Spinner = (props) => {
       // iconChnage();
     }, n * 1000);
   }
+  const start = () => {
+    setIsPaused(true);
+    setIsActive(true);
+    document.getElementById("shape").style.animationPlayState = "running";
 
+    longfunction();
+  };
+  const pause = () => {
+    clearInterval(incrementa1.current);
+    clearInterval(incrementa2.current);
+    clearInterval(incrementb1.current);
+    clearInterval(incrementb2.current);
+    clearInterval(rep.current);
+    clearInterval(lshort.current);
+    clearInterval(reps.current);
+    clearInterval(sshort.current);
+    setIsPaused(false);
+
+    document.getElementById("shape").style.animationPlayState = "paused";
+    document.getElementById("innercircle").style.animationPlayState = "paused";
+  };
   function resume() {
     console.log("resume");
     switch (resumebutton) {
