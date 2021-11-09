@@ -66,7 +66,6 @@ const SideBar = (props) => {
           <div className="p-1">
             <Router>
               <Header Ondata={userData} />
-
               <Route exact path="/profile">
                 <Profile data={Data} />
               </Route>

@@ -31,6 +31,7 @@ const Spinner = (props) => {
     setIsPaused(true);
     setIsActive(true);
     document.getElementById("shape").style.animationPlayState = "running";
+
     longfunction();
   };
   let i = newTime.a3;
@@ -184,6 +185,7 @@ const Spinner = (props) => {
       if (j === 0) {
         setIsActive(false);
         setIsPaused(false);
+
         return;
       }
       short();
@@ -200,13 +202,16 @@ const Spinner = (props) => {
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
           "running";
+
         break;
+
       case 2:
         rest();
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
           "running";
+
         break;
       case 3:
         short();
@@ -214,6 +219,7 @@ const Spinner = (props) => {
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
           "running";
+
         break;
       case 4:
         shortRest();
@@ -226,10 +232,25 @@ const Spinner = (props) => {
         longfunction();
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
+
         break;
     }
   }
-
+  function reset() {
+    clearInterval(incrementa1.current);
+    clearInterval(incrementa2.current);
+    clearInterval(incrementb1.current);
+    clearInterval(incrementb2.current);
+    clearInterval(rep.current);
+    clearInterval(lshort.current);
+    clearInterval(reps.current);
+    clearInterval(sshort.current);
+    setIsPaused(false);
+    setIsActive(false);
+    document.getElementById("shape").style.animationDuration = `${0}s`;
+    document.getElementById("innercircle").style.animationDuration = `${0}s`;
+    setSqueeze(0);
+  }
   return (
     <>
       <section id="banner">
@@ -294,6 +315,11 @@ const Spinner = (props) => {
           </svg>
           <p id="name"></p>
         </div>
+        {isActive && (
+          <button class="start-over btn" id="start-over" onClick={reset}>
+            START OVER
+          </button>
+        )}
       </section>
     </>
   );

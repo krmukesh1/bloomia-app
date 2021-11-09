@@ -157,13 +157,17 @@ select#cars {
 }
 @media (max-width: 767px) {
   svg.button {
-    width: 300px;
-    height: 304px;
+    width: 400px;
   }
   .banner-shadow {
     position: absolute;
-    top: 20%;
-    left: 10%;
+    top: 10%;
+    left: 2%;
+  }
+  button.start-over {
+    position: absolute !important;
+    right: 20% !important;
+    top: 70% !important;
   }
   .logo {
     width: 100px;
@@ -175,5 +179,35 @@ select#cars {
   }
   .setting-right i {
     margin: 0 5px;
+  }
+}
+@media (max-width: 400px) {
+  svg.button {
+    width: 320px;
+  }
+  .banner-shadow {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+  }
+  button.start-over {
+    position: absolute !important;
+    right: 15% !important;
+    top: 75% !important;
+  }
+}
+@media (max-width: 350px) {
+  svg.button {
+    width: 320px;
+  }
+  .banner-shadow {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+  }
+  button.start-over {
+    position: absolute !important;
+    right: 15% !important;
+    top: 75% !important;
   }
 }

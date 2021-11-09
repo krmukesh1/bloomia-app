@@ -63,7 +63,7 @@ const Setting = (props) => {
           <i className={btn_volume} onClick={colorChangeVolume}></i>
         </div>
       </div>
-      <Timer />
+      {/* <Timer /> */}
       <div className="select">
         <DropdownButton title={level}>
           {levelArr.map((ele, index) => (
