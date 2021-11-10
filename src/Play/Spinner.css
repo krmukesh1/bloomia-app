@@ -173,3 +173,74 @@ button.start-over {
   border-radius: 20px;
   color: #fff;
 }
+.modal-backdrop.show {
+  opacity: 0 !important;
+}
+.gilroyHeavy {
+  font-family: Gilroy-Heavy !important;
+}
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  right: 75%;
+  top: 60px;
+  height: 80vh;
+  overflow: auto;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1.3rem;
+  outline: 0;
+  font-family: "Gilroy-SemiBold";
+}
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  overflow: auto;
+}
+.modal-content li,
+.modal-content h5 {
+  font-family: "Gilroy-SemiBold";
+}
+.modal-content p {
+  color: #000;
+  font-family: "Gilroy-SemiBold";
+}
+@media (max-width: 1030px) {
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    right: 49%;
+    top: 75px;
+    height: 80vh;
+  }
+}
+@media (max-width: 900px) {
+  .modal-content {
+    width: 600px;
+    right: 10%;
+    top: 50px;
+    height: 90vh;
+  }
+}
+@media (max-width: 600px) {
+  .modal-content {
+    width: 400px;
+    right: 0%;
+    top: 0px;
+    height: 95vh;
+  }
+}
+@media (max-width: 400px) {
+  .modal-content {
+    width: 350px;
+    right: 0%;
+    top: 0px;
+    height: 85vh;
+  }
+}

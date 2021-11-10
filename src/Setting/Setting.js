@@ -53,7 +53,11 @@ const Setting = (props) => {
       <div className="setting mt-4">
         <div className="setting-left">
           <span>Kegel Exercise</span>
-          <i class="fa fa-question-circle"></i>
+          <i
+            class="fa fa-question-circle"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          ></i>
         </div>
         <div className="setting-right">
           <i className={btn_class} onClick={colorChange}>
