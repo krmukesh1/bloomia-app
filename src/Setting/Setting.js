@@ -255,11 +255,17 @@ const Setting = (props) => {
         </div>
         <div className="bg-grey pb-4">
           <Calendar />
-          <i
-            class="fa fa-question-circle"
-            data-bs-toggle="modal"
-            data-bs-target="#staticBackdrop1"
-          ></i>
+          <div class=" m-0 mt-2 align-items-center justify-content-center d-flex">
+            <span class="width-fit-content">For more details</span>
+
+            <span class="round-bottons">
+              <i
+                class="fa fa-chevron-right fa-sm "
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop1"
+              ></i>
+            </span>
+          </div>
         </div>
       </div>
     </div>

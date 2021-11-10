@@ -179,7 +179,7 @@ button.start-over {
 .gilroyHeavy {
   font-family: Gilroy-Heavy !important;
 }
-.modal-content {
+#staticBackdrop .modal-content {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -196,7 +196,30 @@ button.start-over {
   outline: 0;
   font-family: "Gilroy-SemiBold";
 }
-.modal-body {
+#staticBackdrop .modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+  overflow: auto;
+}
+#staticBackdrop1 .modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 850px;
+  right: 80%;
+  top: 60px;
+  height: 80vh;
+  overflow: auto;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 1.3rem;
+  outline: 0;
+  font-family: "Gilroy-SemiBold";
+}
+#staticBackdrop1 .modal-body {
   position: relative;
   flex: 1 1 auto;
   padding: 1rem;
@@ -211,7 +234,15 @@ button.start-over {
   font-family: "Gilroy-SemiBold";
 }
 @media (max-width: 1030px) {
-  .modal-content {
+  #staticBackdrop .modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    right: 49%;
+    top: 75px;
+    height: 80vh;
+  }
+  #staticBackdrop1 .modal-content {
     display: flex;
     flex-direction: column;
     width: 650px;
@@ -221,7 +252,13 @@ button.start-over {
   }
 }
 @media (max-width: 900px) {
-  .modal-content {
+  #staticBackdrop .modal-content {
+    width: 600px;
+    right: 10%;
+    top: 50px;
+    height: 90vh;
+  }
+  #staticBackdrop1 .modal-content {
     width: 600px;
     right: 10%;
     top: 50px;
@@ -229,7 +266,13 @@ button.start-over {
   }
 }
 @media (max-width: 600px) {
-  .modal-content {
+  #staticBackdrop .modal-content {
+    width: 400px;
+    right: 0%;
+    top: 0px;
+    height: 95vh;
+  }
+  #staticBackdrop1 .modal-content {
     width: 400px;
     right: 0%;
     top: 0px;
@@ -237,7 +280,13 @@ button.start-over {
   }
 }
 @media (max-width: 400px) {
-  .modal-content {
+  #staticBackdrop .modal-content {
+    width: 350px;
+    right: 0%;
+    top: 0px;
+    height: 85vh;
+  }
+  #staticBackdrop1 .modal-content {
     width: 350px;
     right: 0%;
     top: 0px;

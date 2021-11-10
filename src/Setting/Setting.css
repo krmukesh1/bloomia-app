@@ -5,11 +5,11 @@
   background: #fff;
   opacity: 0.9;
   color: #000;
-  width: 100px;
+  /* width: 100px; */
   border: 1px solid #fff;
 }
 .drop .dropdown-menu.show {
-  min-width: 6rem;
+  min-width: 100%;
   height: 200px;
   overflow: auto;
   display: block;
@@ -60,4 +60,8 @@ abbr[data-bs-original-title],
 abbr[title] {
   -webkit-text-decoration: underline dotted;
   text-decoration: none;
+}
+span.round-bottons {
+  margin-left: 20px;
+  cursor: pointer;
 }
