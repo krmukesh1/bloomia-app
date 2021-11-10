@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
 import Timer from "./Timer";
@@ -246,6 +247,20 @@ const Setting = (props) => {
             </div>
           </fieldset>
         </form>
+      </div>
+      <div className="mt-3 mb-3">
+        <div class="row m-0 align-items-center mb-3">
+          <span class="h5 m-0 width-fit-content">Track Your Progress</span>
+          <span id="some" class="ml-auto"></span>
+        </div>
+        <div className="bg-grey pb-4">
+          <Calendar />
+          <i
+            class="fa fa-question-circle"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop1"
+          ></i>
+        </div>
       </div>
     </div>
   );

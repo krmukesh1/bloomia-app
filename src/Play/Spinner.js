@@ -4,6 +4,7 @@ import logo from "./video/Logo v1.png";
 
 import "./Spinner.css";
 import Timer from "../Setting/Timer";
+import CalendarModal from "./CalendarModal";
 const Spinner = (props) => {
   const [newTime, setnewTime] = useState({});
   const [leftTime, setLeftTime] = useState({});
@@ -422,6 +423,7 @@ const Spinner = (props) => {
           </div>
         </div>
       </div>
+      <CalendarModal />
     </>
   );
 };

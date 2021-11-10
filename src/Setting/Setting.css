@@ -45,3 +45,19 @@
 .select .dropdown-menu {
   transform: translate(0px, 40px);
 }
+.react-calendar {
+  width: 100% !important;
+  max-width: 100%;
+  background: transparent;
+  border: 0 !important;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+}
+.react-calendar__month-view__weekdays {
+  font-size: 1.2rem;
+}
+abbr[data-bs-original-title],
+abbr[title] {
+  -webkit-text-decoration: underline dotted;
+  text-decoration: none;
+}
