@@ -142,7 +142,7 @@ const Play = (props) => {
     settimeouta2.current = setTimeout(() => {
       k = settingTime.a1;
       clearInterval(incrementa2.current);
-      --i;
+     
       console.log("settimeout cleared longrest");
       setLeftTime((previous) => {
         return {

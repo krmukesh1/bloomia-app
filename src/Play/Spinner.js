@@ -35,7 +35,6 @@ const Spinner = (props) => {
   var l = newTime.a2;
   var m = newTime.b1;
   var n = newTime.b2;
-  console.log("mukesh", i, j);
 
   useEffect(() => {
     setLeftTime(settingTime);
@@ -54,7 +53,7 @@ const Spinner = (props) => {
     incrementa1.current = setInterval(() => {
       setLeftTime((previous) => {
         console.log("Entry of Long", settingTime.a1);
-        if (previous.a1 < 1) {
+        if (previous.a1 <= 1) {
           return { ...previous, a1: settingTime.a1 };
         }
         return {
@@ -82,7 +81,7 @@ const Spinner = (props) => {
     console.log(i, "brain");
     incrementa2.current = setInterval(() => {
       setLeftTime((previous) => {
-        if (previous.a2 < 1) {
+        if (previous.a2 <= 1) {
           return { ...previous, a2: settingTime.a2 };
         }
         return {
@@ -119,7 +118,7 @@ const Spinner = (props) => {
     document.getElementById("name").innerText = `Short Squeeze`;
     incrementb1.current = setInterval(() => {
       setLeftTime((previous) => {
-        if (previous.b1 < 1) {
+        if (previous.b1 <= 1) {
           return { ...previous, b1: settingTime.b1 };
         }
         return {
@@ -150,7 +149,7 @@ const Spinner = (props) => {
     console.log(j, "Inventory");
     incrementb2.current = setInterval(() => {
       setLeftTime((previous) => {
-        if (previous.b2 < 1) {
+        if (previous.b2 <= 1) {
           return { ...previous, b2: settingTime.b2 };
         }
         return {
