@@ -86,7 +86,7 @@ const Play = (props) => {
   var l = newTime.a2;
   var m = newTime.b1;
   var n = newTime.b2;
-  console.log("iiiiiiii", i, j);
+
   const long = (value) => {
     setResumebutton(1);
     setSqueeze(1);
@@ -142,7 +142,7 @@ const Play = (props) => {
     settimeouta2.current = setTimeout(() => {
       k = settingTime.a1;
       clearInterval(incrementa2.current);
-     
+
       console.log("settimeout cleared longrest");
       setLeftTime((previous) => {
         return {

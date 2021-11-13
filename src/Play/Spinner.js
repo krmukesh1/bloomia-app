@@ -40,9 +40,14 @@ const Spinner = (props) => {
     setLeftTime(settingTime);
     setnewTime(settingTime);
   }, [props.SpinnerValue]);
-  function longfunction() {
+  function longfunction(value) {
+    document.getElementById("shape").style.animationPlayState = "running";
+    console.log("neeeeeeeeeeeeeeewwwwwwww", settingTime);
     setSqueeze(1);
     setResumebutton(1);
+    l = settingTime.a2;
+
+    clearInterval(lshort.current);
     console.log("Entry of Long");
     document.getElementById("shape").classList.add("circle2");
     document.getElementById("shape").classList.remove("circle1");
@@ -51,8 +56,8 @@ const Spinner = (props) => {
     ).style.animationDuration = `${settingTime.a1}s`;
     document.getElementById("name").innerText = `Long Squeeze`;
     incrementa1.current = setInterval(() => {
+      console.log("Entry of Long", settingTime.a1);
       setLeftTime((previous) => {
-        console.log("Entry of Long", settingTime.a1);
         if (previous.a1 <= 1) {
           return { ...previous, a1: settingTime.a1 };
         }
@@ -64,21 +69,20 @@ const Spinner = (props) => {
     }, 1000);
     rep.current = setTimeout(() => {
       clearInterval(incrementa1.current);
-
-      rest();
+      rest(value);
     }, k * 1000);
   }
-  function rest() {
+  function rest(value) {
     setSqueeze(2);
     setResumebutton(2);
+    clearInterval(rep.current);
+    k = 0;
     document.getElementById("shape").classList.add("circle1");
     document.getElementById("shape").classList.remove("circle2");
     document.getElementById(
       "shape"
     ).style.animationDuration = `${settingTime.a2}s`;
     document.getElementById("name").innerText = `Rest`;
-
-    console.log(i, "brain");
     incrementa2.current = setInterval(() => {
       setLeftTime((previous) => {
         if (previous.a2 <= 1) {
@@ -90,26 +94,42 @@ const Spinner = (props) => {
         };
       });
     }, 1000);
+    // check reps
     lshort.current = setTimeout(() => {
+      k = settingTime.a1;
       clearInterval(incrementa2.current);
-      i--;
+      --i;
+      setLeftTime((previous) => {
+        if (previous.a3 <= 1) {
+          return { ...previous, a3: settingTime.a3 };
+        }
+        return {
+          ...previous,
+          a3: previous.a3 - 1,
+        };
+      });
+      console.log("leftTime.a3", leftTime.a3);
+
       if (i === 0) {
-        short();
+        short(value);
         return;
       }
-      longfunction();
+      longfunction(value);
       // iconChnage();
     }, l * 1000);
   }
-  function short() {
+  function short(value) {
     setSqueeze(3);
     setResumebutton(3);
+    n = settingTime.b2;
+
+    clearInterval(rep.current); // when call from rest long first time
+    clearInterval(lshort.current); //when call from rest short
     document.getElementById("shape").classList.add("circle2");
     document.getElementById("shape").classList.remove("circle1");
     document.getElementById(
       "shape"
     ).style.animationDuration = `${settingTime.b1}s`;
-
     document.getElementById("innercircle").classList.add("innerCircle2");
     document.getElementById("innercircle").classList.remove("innerCircle1");
     document.getElementById(
@@ -129,24 +149,24 @@ const Spinner = (props) => {
     }, 1000);
     reps.current = setTimeout(() => {
       clearInterval(incrementb1.current);
-      shortRest();
+
+      shortRest(value);
     }, m * 1000);
   }
-  function shortRest() {
+  function shortRest(value) {
     setSqueeze(4);
     setResumebutton(4);
+    m = 0;
+    clearInterval(reps.current);
     document.getElementById("shape").classList.add("circle1");
     document.getElementById("shape").classList.remove("circle2");
-    document.getElementById(
-      "shape"
-    ).style.animationDuration = `${settingTime.b2}s`;
     document.getElementById("innercircle").classList.add("innerCircle1");
     document.getElementById("innercircle").classList.remove("innerCircle2");
     document.getElementById(
       "shape"
-    ).style.animationDuration = `${props.SpinnerValue.b2}s`;
+    ).style.animationDuration = `${settingTime.b2}s`;
     document.getElementById("name").innerText = `Rest`;
-    console.log(j, "Inventory");
+
     incrementb2.current = setInterval(() => {
       setLeftTime((previous) => {
         if (previous.b2 <= 1) {
@@ -160,24 +180,39 @@ const Spinner = (props) => {
     }, 1000);
 
     sshort.current = setTimeout(() => {
+      m = settingTime.b1;
+
       clearInterval(incrementb2.current);
       j--;
+      setLeftTime((previous) => {
+        if (previous.b3 <= 1) {
+          return { ...previous, b3: settingTime.b3 };
+        }
+        return {
+          ...previous,
+          b3: previous.b3 - 1,
+        };
+      });
+      console.log("leftTime.b3", leftTime.b3);
       if (j === 0) {
+        document.getElementById("shape").style.animationDuration = `${0}s`;
+        document.getElementById(
+          "innercircle"
+        ).style.animationDuration = `${0}s`;
+        clearInterval(sshort.current);
         setIsActive(false);
         setIsPaused(false);
-
+        setSqueeze(0);
         return;
       }
-      short();
+      short(value);
       // iconChnage();
     }, n * 1000);
   }
   const start = () => {
     setIsPaused(true);
     setIsActive(true);
-    document.getElementById("shape").style.animationPlayState = "running";
-
-    longfunction();
+    longfunction(settingTime);
   };
   const pause = () => {
     clearInterval(incrementa1.current);
@@ -189,7 +224,7 @@ const Spinner = (props) => {
     clearInterval(reps.current);
     clearInterval(sshort.current);
     setIsPaused(false);
-
+    setnewTime(leftTime);
     document.getElementById("shape").style.animationPlayState = "paused";
     document.getElementById("innercircle").style.animationPlayState = "paused";
   };
@@ -197,7 +232,7 @@ const Spinner = (props) => {
     console.log("resume");
     switch (resumebutton) {
       case 1:
-        longfunction();
+        longfunction(newTime);
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
@@ -206,7 +241,7 @@ const Spinner = (props) => {
         break;
 
       case 2:
-        rest();
+        rest(newTime);
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
@@ -214,7 +249,7 @@ const Spinner = (props) => {
 
         break;
       case 3:
-        short();
+        short(newTime);
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
@@ -222,14 +257,14 @@ const Spinner = (props) => {
 
         break;
       case 4:
-        shortRest();
+        shortRest(newTime);
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
         document.getElementById("innercircle").style.animationPlayState =
           "running";
         break;
       default:
-        longfunction();
+        longfunction(newTime);
         setIsPaused(true);
         document.getElementById("shape").style.animationPlayState = "running";
 
