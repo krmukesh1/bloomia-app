@@ -12,7 +12,15 @@ const Spinner = (props) => {
   const [isPaused, setIsPaused] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [resumebutton, setResumebutton] = useState(0);
-  const settingTime = {
+  let settingTime = {
+    a1: props.SpinnerValue.a1,
+    a2: props.SpinnerValue.a2,
+    a3: props.SpinnerValue.a3,
+    b1: props.SpinnerValue.b1,
+    b2: props.SpinnerValue.b2,
+    b3: props.SpinnerValue.b3,
+  };
+  const settingTimes = {
     a1: props.SpinnerValue.a1,
     a2: props.SpinnerValue.a2,
     a3: props.SpinnerValue.a3,
@@ -203,6 +211,8 @@ const Spinner = (props) => {
         setIsActive(false);
         setIsPaused(false);
         setSqueeze(0);
+        setnewTime(settingTimes);
+        // settingTime = JSON.parse(JSON.stringify(settingTimes));
         return;
       }
       short(value);
