@@ -1,18 +1,27 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
-import Timer from "./Timer";
 const Setting = (props) => {
   var n = 60;
   const array = [...Array(n)];
   const arr = array.map((item, index) => index + 1);
   const [disableReverse, setDisableReverse] = useState(true);
+  const [disableEmail, setDisableEmail] = useState(false);
+
   const enableReverse = () => {
     setDisableReverse(!disableReverse);
   };
-
+  const enableEmail = () => {
+    setDisableEmail(!disableEmail);
+  };
+  const modify = () => {
+    setDisableReverse(!disableReverse);
+  };
+  const goal = () => {
+    setDisableReverse(!disableReverse);
+  };
   const [word, setWord] = useState(true);
   let btn_class = word ? "fa fa-sm-word" : "fa fa-sm-words";
   const colorChange = () => {
@@ -267,6 +276,93 @@ const Setting = (props) => {
             </span>
           </div>
         </div>
+      </div>
+      <div className="mt-3 mb-3">
+        <div className="col-12 mt-5">
+          <div className="reverse">
+            <div className="col-8">
+              <h6>Email Reminder </h6>
+            </div>
+            <div className="col-4 fieldsettoggle form-check form-switch">
+              <input
+                className=" form-check-input"
+                type="checkbox"
+                id="flexSwitchCheckDefault"
+                onClick={enableEmail}
+              />
+            </div>
+          </div>
+        </div>
+        {disableEmail ? (
+          <fieldset className="field">
+            <p className="field">
+              Set a time to receive email reminders for your Kegel workout.
+              Bloomia will email you if workout has not been completed by your
+              desired time. The timezone is your local time
+            </p>
+            <div className="row">
+              <div className=" form-group col-4">
+                <div className="drop">
+                  <DropdownButton title={value.c1}>
+                    {arr.map((element, index) => (
+                      <Dropdown.Item
+                        onClick={() => updateValue(element, "c1")}
+                        key={index}
+                      >
+                        {element}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        ) : null}
+      </div>
+      <div className="mt-3 mb-3" id="goal">
+        <div className="col-12">
+          <div className="reverse">
+            <div className="col-8">
+              <h6>Your Goal </h6>
+            </div>
+            <div className="col-4 fieldsettoggle form-check form-switch">
+              <button className="btn-primary" onClick={modify}>
+                Modify
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {!disableReverse ? (
+          <fieldset className="field">
+            <p className="field">
+              Set a time to receive email reminders for your Kegel workout.
+              Bloomia will email you if workout has not been completed by your
+              desired time. The timezone is your local time
+            </p>
+            <div className="row">
+              <div className=" form-group col-4">
+                <div className="drop">
+                  <DropdownButton title={value.c1}>
+                    {arr.map((element, index) => (
+                      <Dropdown.Item
+                        onClick={() => updateValue(element, "c1")}
+                        key={index}
+                      >
+                        {element}
+                      </Dropdown.Item>
+                    ))}
+                  </DropdownButton>
+                </div>
+              </div>
+            </div>
+            <div className="goal">
+              <button className="btn-primary" onClick={goal}>
+                Set Goal
+              </button>
+            </div>
+          </fieldset>
+        ) : null}
       </div>
     </div>
   );

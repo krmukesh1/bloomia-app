@@ -173,6 +173,12 @@ button.start-over {
   border-radius: 20px;
   color: #fff;
 }
+.Reps-count {
+  position: absolute !important;
+  right: 24% !important;
+  top: 88% !important;
+  transform: translate(-50%, -50%);
+}
 .modal-backdrop.show {
   opacity: 0 !important;
 }

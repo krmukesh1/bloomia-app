@@ -65,3 +65,17 @@ span.round-bottons {
   margin-left: 20px;
   cursor: pointer;
 }
+.field p {
+  color: #222;
+}
+.field .drop button.dropdown-toggle.btn.btn-primary {
+  background: #ebebfc;
+  opacity: 0.9;
+  color: #000;
+  border: 1 px solid #fff;
+}
+div#goal {
+  background: #ebebfc;
+  padding: 10px 10px;
+  border-radius: 10px;
+}

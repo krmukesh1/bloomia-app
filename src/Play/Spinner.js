@@ -3,7 +3,7 @@ import backvideo from "./video/Light Mode.mp4";
 import logo from "./video/Logo v1.png";
 
 import "./Spinner.css";
-import Timer from "../Setting/Timer";
+
 import CalendarModal from "./CalendarModal";
 const Spinner = (props) => {
   const [newTime, setnewTime] = useState({});
@@ -360,11 +360,25 @@ const Spinner = (props) => {
           </svg>
           <p id="name"></p>
         </div>
-        {isActive && (
-          <button class="start-over btn" id="start-over" onClick={reset}>
-            START OVER
-          </button>
-        )}
+        <div>
+          {isActive && (
+            <button class="start-over btn" id="start-over" onClick={reset}>
+              START OVER
+            </button>
+          )}
+          {isActive && (
+            <div className="Reps-count text-light ">
+              {Squeeze === 1 &&
+                `${leftTime.a3} Reps more to go of Long Squeeze`}
+              {Squeeze === 2 &&
+                `${leftTime.a3} Reps more to go of Long Squeeze`}
+              {Squeeze === 3 &&
+                `${leftTime.b3} Reps more to go of Short Squeeze`}
+              {Squeeze === 4 &&
+                `${leftTime.b3} Reps more to go of  Short Squeeze`}
+            </div>
+          )}
+        </div>
       </section>
       {/* <Timer /> */}
       {/* Modal  */}
