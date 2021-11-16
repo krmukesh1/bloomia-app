@@ -277,7 +277,7 @@ const Setting = (props) => {
           </div>
         </div>
       </div>
-      <div className="mt-3 mb-3">
+      <div className="mt-3 mb-3" id="email">
         <div className="col-12 mt-5">
           <div className="reverse">
             <div className="col-8">
@@ -303,16 +303,7 @@ const Setting = (props) => {
             <div className="row">
               <div className=" form-group col-4">
                 <div className="drop">
-                  <DropdownButton title={value.c1}>
-                    {arr.map((element, index) => (
-                      <Dropdown.Item
-                        onClick={() => updateValue(element, "c1")}
-                        key={index}
-                      >
-                        {element}
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
+                  <input type="datetime-local" id="datetime-local" />
                 </div>
               </div>
             </div>
@@ -343,13 +334,24 @@ const Setting = (props) => {
             <div className="row">
               <div className=" form-group col-4">
                 <div className="drop">
-                  <DropdownButton title={value.c1}>
-                    {arr.map((element, index) => (
+                  <input
+                    id="sets"
+                    className="input-sets"
+                    type="number"
+                    min="1"
+                    value="1"
+                  />
+                </div>
+              </div>
+              <div className=" form-group col-4">
+                <div className="drop">
+                  <DropdownButton title={level}>
+                    {levelArr.map((ele, index) => (
                       <Dropdown.Item
-                        onClick={() => updateValue(element, "c1")}
+                        onClick={() => selectValue(ele)}
                         key={index}
                       >
-                        {element}
+                        {ele}
                       </Dropdown.Item>
                     ))}
                   </DropdownButton>
