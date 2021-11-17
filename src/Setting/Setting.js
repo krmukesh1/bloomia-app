@@ -367,6 +367,32 @@ const Setting = (props) => {
           </div>
         ) : null}
       </div>
+      <div className="mt-3 mb-3" id="subscribe">
+        <div className="goal bg-primary">
+          <div className="left">
+            <h6>Subscribed User</h6>
+            <h6>Valid till</h6>
+          </div>
+          <button className="btn-danger">Unsubscribe</button>
+        </div>
+      </div>
+      <div className="mt-3 mb-3" id="link">
+        <div className="link-left">
+          <a href="https://bloomia.app/terms-and-conditions/">
+            Terms and Conditions
+          </a>
+          <a href="https://bloomia.app/disclamer">Disclamer</a>
+        </div>
+        <div className="link-left">
+          <a href="https://bloomia.app/privacy/">Privacy</a>
+          <a href="https://bloomia.app/contact-us/">Contact Us</a>
+        </div>
+        <div className="link-left">
+          <a href="https://bloomia.app/refund-and-cancellations/">
+            Refund and Cancellations
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
