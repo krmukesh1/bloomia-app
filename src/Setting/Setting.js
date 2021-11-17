@@ -300,11 +300,10 @@ const Setting = (props) => {
               Bloomia will email you if workout has not been completed by your
               desired time. The timezone is your local time
             </p>
-            <div className="row">
-              <div className=" form-group col-4">
-                <div className="drop">
-                  <input type="datetime-local" id="datetime-local" />
-                </div>
+
+            <div className=" form-group col-4">
+              <div className="drop">
+                <input type="datetime-local" id="datetime-local" />
               </div>
             </div>
           </fieldset>
@@ -316,54 +315,56 @@ const Setting = (props) => {
             <div className="col-8">
               <h6>Your Goal </h6>
             </div>
-            <div className="col-4 fieldsettoggle form-check form-switch">
-              <button className="btn-primary" onClick={modify}>
-                Modify
-              </button>
-            </div>
+            {disableReverse ? (
+              <div className="col-4 fieldsettoggle form-check form-switch">
+                <button className="btn-primary" onClick={modify}>
+                  Modify
+                </button>
+              </div>
+            ) : null}
           </div>
         </div>
 
         {!disableReverse ? (
-          <fieldset className="field">
-            <p className="field">
-              Set a time to receive email reminders for your Kegel workout.
-              Bloomia will email you if workout has not been completed by your
-              desired time. The timezone is your local time
-            </p>
-            <div className="row">
-              <div className=" form-group col-4">
-                <div className="drop">
-                  <input
-                    id="sets"
-                    className="input-sets"
-                    type="number"
-                    min="1"
-                    value="1"
-                  />
+          <div class="w-100 border-top-black mt-2 pt-3">
+            <fieldset className="field">
+              <div className="row">
+                <div className=" form-group col-4">
+                  <div className="text-sm-left">Sets</div>
+                  <div className="drop">
+                    <input
+                      id="sets"
+                      className="input-sets"
+                      type="number"
+                      min="1"
+                      value="1"
+                    />
+                  </div>
+                </div>
+                <div className=" form-group col-4">
+                  <div className="text-sm-right">Select Type</div>
+                  <div className="drop">
+                    <DropdownButton title={level}>
+                      {levelArr.map((ele, index) => (
+                        <Dropdown.Item
+                          onClick={() => selectValue(ele)}
+                          key={index}
+                        >
+                          {ele}
+                        </Dropdown.Item>
+                      ))}
+                    </DropdownButton>
+                  </div>
+                </div>
+                <div className="goal">
+                  <button className="btn-primary" onClick={goal}>
+                    Set Goal
+                  </button>
+                  <p>0 min 32sec a day.</p>
                 </div>
               </div>
-              <div className=" form-group col-4">
-                <div className="drop">
-                  <DropdownButton title={level}>
-                    {levelArr.map((ele, index) => (
-                      <Dropdown.Item
-                        onClick={() => selectValue(ele)}
-                        key={index}
-                      >
-                        {ele}
-                      </Dropdown.Item>
-                    ))}
-                  </DropdownButton>
-                </div>
-              </div>
-            </div>
-            <div className="goal">
-              <button className="btn-primary" onClick={goal}>
-                Set Goal
-              </button>
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
         ) : null}
       </div>
     </div>
