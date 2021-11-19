@@ -7,6 +7,7 @@ const GoalSetting = (props) => {
   const [disableReverse, setDisableReverse] = useState(true);
   const [level, setlevel] = useState(0);
   const [goalseted, setgoalseted] = useState(false);
+  const [userData, setUserData] = useState({});
   const [settingGoal, setSettingGoal] = useState({
     set: "1",
     setType: "Beginner",
@@ -17,12 +18,28 @@ const GoalSetting = (props) => {
     const value = e.target.value;
     setSettingGoal({ ...settingGoal, [name]: value });
   };
-  console.log("setting", props.onGoaltime);
+  console.log("setting", settingGoal.totalGoalTime);
 
   const modify = () => {
     setDisableReverse(!disableReverse);
   };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    console.log(token);
 
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    };
+    axios
+      .get("https://bloomia.herokuapp.com/goal/getGoalData", config)
+      .then((response) => {
+        console.log(response);
+        setUserData(response.data.data);
+      });
+  }, []);
   const goal = async (e) => {
     setDisableReverse(!disableReverse);
     e.preventDefault();
@@ -52,8 +69,24 @@ const GoalSetting = (props) => {
       ...settingGoal,
       totalGoalTime: props.onGoaltime * settingGoal.set,
     });
-  }, [value, settingGoal.set]);
-  let A = new Date(settingGoal.totalGoalTime * settingGoal.set * 1000)
+    switch (settingGoal.setType) {
+      case "Beginner":
+        setlevel(0);
+        break;
+      case "Intermediate":
+        setlevel(1);
+        break;
+      case "Advanced":
+        setlevel(2);
+        break;
+      case "Quick":
+        setlevel(3);
+        break;
+      default:
+        break;
+    }
+  }, [value, settingGoal.set, settingGoal.setType]);
+  let A = new Date(props.onGoaltime * settingGoal.set * 1000)
     .toISOString()
     .substr(14, 5)
     .replace(":", " Min ");
