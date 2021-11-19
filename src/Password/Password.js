@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router";
 
 const Password = () => {
   const [newPassword, setNPassword] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+
   const submitHandler = async (e) => {
     setPassIconchnage(true);
     setDisablePassReverse(true);

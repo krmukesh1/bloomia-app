@@ -8,9 +8,6 @@ const Login = () => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [first_name, setName] = useState("");
-  const [last_name, setLastName] = useState("");
-  const [Image, setImage] = useState("");
 
   const submitHandler = async (e) => {
     let user = { email, password };

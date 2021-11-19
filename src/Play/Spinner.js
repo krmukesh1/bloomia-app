@@ -43,7 +43,9 @@ const Spinner = (props) => {
   var l = newTime.a2;
   var m = newTime.b1;
   var n = newTime.b2;
-
+  let TotalSetTime =
+    (settingTime.a1 + settingTime.a2) * settingTime.a3 +
+    (settingTime.b1 + settingTime.b2) * settingTime.b3;
   useEffect(() => {
     setLeftTime(settingTime);
     setnewTime(settingTime);

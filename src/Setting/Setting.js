@@ -3,6 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { DropdownButton, Dropdown } from "react-bootstrap";
 import "./Setting.css";
+import GoalSetting from "./GoalSetting";
 const Setting = (props) => {
   var n = 60;
   const array = [...Array(n)];
@@ -52,7 +53,11 @@ const Setting = (props) => {
     setValue(state);
   };
 
+  let TotalSetTime =
+    (value.a1 + value.a2) * value.a3 + (value.b1 + value.b2) * value.b3;
+  console.log("time", TotalSetTime);
   props.datavalue(value);
+  console.log("valu5", value);
   const levelArr = ["Beginner", "Intermediate", "Advanced", "Quick"];
   const [level, setLevel] = useState("Beginner");
   const selectValue = (ele) => {
@@ -309,7 +314,7 @@ const Setting = (props) => {
           </fieldset>
         ) : null}
       </div>
-      <div className="mt-3 mb-3" id="goal">
+      {/* <div className="mt-3 mb-3" id="goal">
         <div className="col-12">
           <div className="reverse">
             <div className="col-8">
@@ -337,7 +342,6 @@ const Setting = (props) => {
                       className="input-sets"
                       type="number"
                       min="1"
-                      value="1"
                     />
                   </div>
                 </div>
@@ -366,7 +370,8 @@ const Setting = (props) => {
             </fieldset>
           </div>
         ) : null}
-      </div>
+      </div> */}
+      <GoalSetting onGoaltime={TotalSetTime} data={value} />
       <div className="mt-3 mb-3" id="subscribe">
         <div className="goal bg-primary">
           <div className="left">
@@ -376,6 +381,7 @@ const Setting = (props) => {
           <button className="btn-danger">Unsubscribe</button>
         </div>
       </div>
+
       <div className="mt-3 mb-3" id="link">
         <div className="link-left">
           <a href="https://bloomia.app/terms-and-conditions/">
